@@ -3,7 +3,7 @@ package groupProject;
 import java.io.*;
 import java.util.Scanner;
 
-//TOM, LAU EN LUC ZIJN BAZEN
+//TOM, LAU EN LUC ZIJN BAZENnn
 
 public class Main {
 
