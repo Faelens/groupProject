@@ -3,6 +3,7 @@ package groupProject;
 import java.io.*;
 import java.util.Scanner;
 
+//Tom, LAu en Luc zijn bazen
 
 public class Main {
 
