@@ -50,6 +50,6 @@ public class Main {
 
 				break;
 			}
-		} TEST NIGGA
+		}
 	}
 }
