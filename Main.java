@@ -37,6 +37,7 @@ public class Main {
 					}
 					else if (recruiterOrUser == 'A'){
 						
+						break;
 					}
 				}
 
