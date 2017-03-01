@@ -1,11 +1,11 @@
 package groupProject;
 
 public class User {
-	int userID;
-	String logInName;
-	String passWord;
-	String emailAddress;
-	String name;
+	static int userID;
+	static String logInName;
+	static String passWord;
+	static String emailAddress;
+	static String name;
 
 	public static void logIn(){
 	}
@@ -15,9 +15,11 @@ public class User {
 	}
 
 	public static void logOut(){
+		// Print a bye bye statement with a cool picture ASCII
 	}
 
 	public static void viewVacancies(){
+		// view ALL vacancies
 	}
 
 	public static void searchVacancies(){
