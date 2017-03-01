@@ -4,7 +4,7 @@ import java.io.*;
 import java.util.Scanner;
 
 //TOM, LAU EN LUC ZIJN BAZENnn
-
+//tom kan helemaal niks
 public class Main {
 
 	public static Scanner userInput1 = new Scanner(System.in);	//Char
