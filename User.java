@@ -23,6 +23,10 @@ public class User {
 	}
 	
 	//Setters
+	public void setUserID(int userID){
+		this.userID = userID;
+	}
+	
 	public void setLogInName(String logInName){
 		this.logInName = logInName;
 	}
@@ -38,7 +42,7 @@ public class User {
 	}	
 	
 	//Getters
-	public static int getUserID() {
+	public int getUserID() {
 		return userID;
 	}
 	public static String getLoginName() {

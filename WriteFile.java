@@ -129,7 +129,7 @@ public class WriteFile {
 			while((sCurrentLine = br.readLine()) != null){					
 				uCurrentLine = sCurrentLine.split("\t");			
 				// every time if statement not met, increment counter to know what line is read.
-				if(Integer.parseInt(uCurrentLine[0]) == User.getUserID()){				
+				if(Integer.parseInt(uCurrentLine[0]) == candidate.getUserID()){				
 					sCurrentLine = uCurrentLine[0] +"\t"+ User.getLoginName() +"\t"+ User.getPassword() +"\t"+ User.getName() +"\t"+ User.getEmailAddress() +"\t"+ candidate.getFieldOfStudy() +"\t"+ candidate.getExperience() +"\t"+ 
 							candidate.getAvailability() +"\t"+ candidate.getDutch() +"\t"+ candidate.getEnglish() +"\t"+ candidate.getGerman() +"\t"+ candidate.getMSOffice() +"\t"+ candidate.getJavaScript() +"\t"+ candidate.getSales() +"\t"+ candidate.getManagement();				 
 				}

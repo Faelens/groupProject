@@ -34,6 +34,7 @@ public class Candidate extends User {
 
 	public Candidate(int userID, String logInName, String password, String name, String emailAddress, int fieldOfStudy, int experience, 
 			int availability, boolean Dutch, boolean English, boolean German, boolean msOffice, boolean Javascript, boolean Sales, boolean Management){
+		setUserID(userID);
 		setLogInName(logInName);
 		setPassword(password);
 		setName(name);
@@ -150,10 +151,10 @@ public class Candidate extends User {
 		}
 
 		while(true){
-			System.out.print("What is you field of study? : ");
-			System.out.print("1 = Business");
-			System.out.print("2 = Social");
-			System.out.print("3 = Technical: ");
+			System.out.println("What is you field of study? : ");
+			System.out.println("1 = Business");
+			System.out.println("2 = Social");
+			System.out.println("3 = Technical: ");
 			fieldOfStudy = Main.userInput3.nextInt();
 
 			if(fieldOfStudy == 1 || fieldOfStudy == 2 || fieldOfStudy == 3) break;
@@ -355,7 +356,7 @@ public class Candidate extends User {
 					System.out.println("Can't be empty!");
 					continue;
 				}
-				User.setName(newname);
+				Main.candidate.setName(newname);
 
 				WriteFile.updateCandidate(this);
 				System.out.println("Your name has been updated");
@@ -363,6 +364,50 @@ public class Candidate extends User {
 				break;
 			}
 		}
+
+		if(choice == 3){ // Email address			
+			while(true){		
+				System.out.println("\nYour current e-mailaddress is: " + User.getEmailAddress());
+				System.out.print("Please enter your new e-mailaddress:");
+				String newemail = Main.userInput2.nextLine();	
+
+				if(newemail.equals("")){
+					System.out.println("Can't be empty!");
+					continue;
+				}
+				Main.candidate.setEmailAddress(newemail);
+
+				WriteFile.updateCandidate(this);
+				System.out.println("Your e-mailaddress has been updated\n");
+				
+				break;
+			}
+		}
+
+		if(choice == 4){ // Field of study			
+			while(true){		
+				System.out.println("1 = Business");
+				System.out.println("2 = Social");
+				System.out.println("3 = Technical: ");
+				System.out.println("Your current field of study is: " + getFieldOfStudy());
+				System.out.print("Please enter your new field of study:");
+				
+				int newFieldOfStudy = Main.userInput3.nextInt();	
+				if(newFieldOfStudy != 1 && newFieldOfStudy != 2 && newFieldOfStudy != 3){
+					System.out.println("Please enter 1, 2 or 3");
+					continue;
+				}
+				setFieldOfStudy(newFieldOfStudy);
+
+				WriteFile.updateCandidate(this);
+				System.out.println("Your field of study has been updated\n");
+				
+				break;
+			}
+		}
+		
+		/* TODO De rest van de choices kopieren plakken/ invullen!!!!!!  */
+		
 
 	}
 	public static void getCandidateInfo(){	
@@ -373,6 +418,10 @@ public class Candidate extends User {
 	}
 
 	//SETTERS
+
+	public void setFieldOfStudy(int fieldOfStudy){
+		this.fieldOfStudy = fieldOfStudy;
+	}
 
 	//Getters
 	public int getFieldOfStudy() {
