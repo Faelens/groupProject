@@ -331,84 +331,326 @@ public class Candidate extends User {
 
 	public void setCandidateInfo(){
 		int choice = 0;
+		while(true){
+			System.out.println("\n#####################");
+			System.out.println("What do you want to do?");
+			System.out.println("1 = Change password");
+			System.out.println("2 = Change name");
+			System.out.println("3 = Change e-mailaddress");
+			System.out.println("4 = Change field of study");
+			System.out.println("5 = Change experience");
+			System.out.println("6 = Change availability");
+			System.out.println("7 = Change languages");
+			System.out.println("8 = Change skills");
+			System.out.println("9 = Back to main menu");
 
-		System.out.println("\n####################");
-		System.out.println("What information would you like to update?");
-		System.out.println("1 = Password");
-		System.out.println("2 = Name");
-		System.out.println("3 = E-mailaddress");
-		System.out.println("4 = Field of study");
-		System.out.println("5 = Experience");
-		System.out.println("6 = Availability");
-		System.out.println("7 = Languages");
-		System.out.println("8 = Skills");
-		System.out.println("9 = Back to main menu");
+			choice = Main.userInput3.nextInt();
 
-		choice = Main.userInput3.nextInt();
+			if(choice == 1){	
+				while(true){
+					String newpassword = null;
+					while(true){
+						System.out.println("Your current password is: " + getPassword());
+						System.out.println("--------------------------");
+						System.out.print("Fill in your new password here: ");
+						newpassword = Main.userInput2.nextLine();
 
-		if(choice == 2){ // Name			
-			while(true){		
-				System.out.println("\nYour current name is: " + User.getName());
-				System.out.print("Please enter your new name:");
-				String newname = Main.userInput2.nextLine();	
+						if(!newpassword.equals("")) break;
 
-				if(newname.equals("")){
-					System.out.println("Can't be empty!");
-					continue;
+					}
+					System.out.print("Repeat your new password: ");
+					String repeatnewpassword = Main.userInput2.nextLine();		
+
+					if(!repeatnewpassword.equals(newpassword)) {			
+						System.out.println("Your passwords do not match!");
+					}
+
+					Main.candidate.setPassword(newpassword);
+
+					WriteFile.updateCandidate(this);
+					System.out.println("Your password has been updated correctly."); 
+					System.out.println("Use it to log in next time");
+					break;
 				}
-				Main.candidate.setName(newname);
 
-				WriteFile.updateCandidate(this);
-				System.out.println("Your name has been updated");
-				
+			}
+			if(choice == 2){ // Name			
+				while(true){		
+					System.out.println("\nYour current name is: " + User.getName());
+					System.out.print("Please enter your new name:");
+					String newname = Main.userInput2.nextLine();	
+
+					if(newname.equals("")){
+						System.out.println("Can't be empty!");
+						continue;
+					}
+					Main.candidate.setName(newname);
+
+					WriteFile.updateCandidate(this);
+					System.out.println("Your name has been updated correctly to " 
+							+ User.getName() + "\n.");
+					break;
+				}
+			}
+
+			if(choice == 3){ // Email address			
+				while(true){		
+					System.out.println("\nYour current e-mailaddress is: " + User.getEmailAddress());
+					System.out.print("Please enter your new e-mailaddress:");
+					String newemail = Main.userInput2.nextLine();	
+
+					if(newemail.equals("")){
+						System.out.println("Can't be empty!");
+						continue;
+					}
+					Main.candidate.setEmailAddress(newemail);
+
+					WriteFile.updateCandidate(this);
+					System.out.println("Your e-mailaddress has been updated correctly to " 
+							+ User.getEmailAddress() + ".\n");
+					break;
+				}
+			}
+
+			if(choice == 4){ // Field of study			
+				while(true){		
+					System.out.println("The possible fields of study are:");
+					System.out.println("1 = Business");
+					System.out.println("2 = Social");
+					System.out.println("3 = Technical");
+					System.out.println("Your current field of study is: " + getFieldOfStudy());
+					System.out.print("Please enter your new field of study:");
+
+					int newFieldOfStudy = (int)Main.userInput3.nextInt();	
+					if(newFieldOfStudy != 1 && newFieldOfStudy != 2 && newFieldOfStudy != 3){
+						System.out.println("Please enter 1, 2 or 3");
+						continue;
+					}
+					setFieldOfStudy(newFieldOfStudy);
+
+					WriteFile.updateCandidate(this);
+					System.out.println("Your field of study has been updated corrrectly to " 
+							+ fieldOfStudy + ".\n");
+					break;
+				}
+			}
+
+			if(choice == 5){ // Experience		
+				while(true){		
+					System.out.println("Currently, your profile says you have " 
+							+ experience + " years of experience.");
+					System.out.print("Enter your new experience level here: ");
+					int newExperience = (int)Main.userInput3.nextInt();	
+
+					if(newExperience < 0){
+						System.out.println("A positive number is required!");
+						continue;
+					}
+					setExperience(newExperience);
+
+					WriteFile.updateCandidate(this);
+					System.out.println("Your experience has been updated correctly to " 
+							+ experience + " years.\n");
+					break;
+				}
+			}
+
+			if(choice == 6){ // Availability		
+				while(true){		
+					System.out.println("1 = Available immediately");
+					System.out.println("2 = Not available immediately");
+					System.out.println("Your current availability is set to: " + availability + ".");
+
+					System.out.print("Enter your new availability status here: ");
+					int newAvailability = (int)Main.userInput3.nextInt();	
+					if(newAvailability != 1 && newAvailability != 2){
+						System.out.println("Please enter 1 or 2");
+						continue;
+					}
+					setAvailability(newAvailability);
+
+					WriteFile.updateCandidate(this);
+					System.out.println("Your availability has been updated correctly to " 
+							+ availability + ".");
+					break;
+				}
+			}
+
+			if(choice == 7){ // Languages	
+				while(true){		
+					System.out.println("Currently, your language settings are as follows: ");
+					System.out.println("Dutch: " + dutch);
+					System.out.println("English: " + english);
+					System.out.println("German: " + german);
+
+					//To ask for Dutch
+					System.out.println("----------------------------");
+					System.out.println("Do you speak Dutch? (Y/N)"); 
+					char newDutch = 'Z';
+					boolean tempDutch = true;
+					newDutch = Main.userInput1.next().charAt(0);							// maybe need to change to int scanner
+
+					if(newDutch == 'Y') { 
+						tempDutch = true;
+					}	else if(newDutch == 'N') { 
+						tempDutch = false;
+					}	else {
+						System.out.println("####################");
+						System.out.println("Please enter Y or N!");
+						System.out.println("####################");
+						continue;
+					}
+
+					setDutch(tempDutch);
+
+					//To ask for English
+					System.out.println("Do you speak English? (Y/N)"); 
+					char newEnglish = 'Z';
+					boolean tempEnglish = true;
+					newEnglish = Main.userInput1.next().charAt(0);							// maybe need to change to int scanner
+
+					if(newEnglish == 'Y') { 
+						tempEnglish = true;
+					}	else if(newEnglish == 'N') { 
+						tempEnglish = false;
+					}	else {
+						System.out.println("####################");
+						System.out.println("Please enter Y or N!");
+						System.out.println("####################");
+						continue;
+					}
+
+					setEnglish(tempEnglish);
+
+					//To ask for German
+					System.out.println("Do you speak German? (Y/N)"); 
+					char newGerman = 'Z';
+					boolean tempGerman = true;
+					newGerman = Main.userInput1.next().charAt(0);							// maybe need to change to int scanner
+
+					if(newGerman == 'Y') { 
+						tempGerman = true;
+					}	else if(newGerman == 'N') { 
+						tempGerman = false;
+					}	else {
+						System.out.println("####################");
+						System.out.println("Please enter Y or N!");
+						System.out.println("####################");
+						continue;
+					}
+					setGerman(tempGerman);
+
+					WriteFile.updateCandidate(this);
+					System.out.println("Your languages have been correctly updated to: ");
+					System.out.println("Dutch: " + dutch);
+					System.out.println("English: " + english);
+					System.out.println("German: " + german);
+					break;
+				}
+			}
+			if(choice == 8){ // Skills		
+				System.out.println("Your current skills are set as follows:");
+				System.out.println("MS Office: " + msOffice);
+				System.out.println("JavaScript: " + javaScript);
+				System.out.println("Sales: " + sales);
+				System.out.println("Management: " + management);
+
+				while(true){		
+					//To ask for MS Office
+					System.out.println("------------------------------------------");
+					System.out.println("Are you able to work with MS Office? (Y/N)"); 
+					char newmsOffice = 'Z';
+					boolean tempmsOffice = true;
+					newmsOffice = Main.userInput1.next().charAt(0);							// maybe need to change to int scanner
+
+					if(newmsOffice == 'Y') { 
+						tempmsOffice = true;
+					}	else if(newmsOffice == 'N') { 
+						tempmsOffice = false;
+					}	else {System.out.println("Please enter Y or N");
+					continue;
+					}
+					setmsOffice(tempmsOffice);
+
+					//To ask for JavaScript
+					System.out.println("Are you able to program in JavaScript? (Y/N)"); 
+					char newjavaScript = 'Z';
+					boolean tempJavaScript = true;
+					newjavaScript = Main.userInput1.next().charAt(0);							// maybe need to change to int scanner
+
+					if(newjavaScript == 'Y') { 
+						tempJavaScript = true;
+					}	else if(newjavaScript == 'N') { 
+						tempJavaScript = false;
+					}	else {System.out.println("Please enter Y or N");
+					continue;
+					}
+					setjavaScript(tempJavaScript);
+
+					//To ask for Sales 
+					System.out.println("Do you have experience in Sales? ( Y/N )"); 
+					char newsales = 'Z';
+					boolean tempsales = true;
+					newsales = Main.userInput1.next().charAt(0);							// maybe need to change to int scanner
+
+					if(newsales == 'Y') { 
+						tempsales = true;
+					}	else if(newsales == 'N') { 
+						tempsales = false;
+					}	else {System.out.println("Please enter Y or N");
+					continue;
+					}
+					setsales(tempsales);
+
+					//To ask for Management 
+					System.out.println("Do you have experience in Management? ( Y/N )"); 
+					char newmanagement = 'Z';
+					boolean tempmanagement = true;
+					newmanagement = Main.userInput1.next().charAt(0);							// maybe need to change to int scanner
+
+					if(newmanagement == 'Y') { 
+						tempmanagement = true;
+					}	else if(newmanagement == 'N') { 
+						tempmanagement = false;
+					}	else {System.out.println("Please enter Y or N");
+					continue;
+					}
+					setmanagement(tempmanagement);
+
+					WriteFile.updateCandidate(this);
+					System.out.println("Your skills have been updated correctly to:");
+					System.out.println("MS Office: " + msOffice);
+					System.out.println("JavaScript: " + javaScript);
+					System.out.println("Sales: " + sales);
+					System.out.println("Management: " + management);
+					break;
+				}
+			}
+			if(choice == 9){ // Go Back			
+				System.out.println("");
 				break;
 			}
 		}
-
-		if(choice == 3){ // Email address			
-			while(true){		
-				System.out.println("\nYour current e-mailaddress is: " + User.getEmailAddress());
-				System.out.print("Please enter your new e-mailaddress:");
-				String newemail = Main.userInput2.nextLine();	
-
-				if(newemail.equals("")){
-					System.out.println("Can't be empty!");
-					continue;
-				}
-				Main.candidate.setEmailAddress(newemail);
-
-				WriteFile.updateCandidate(this);
-				System.out.println("Your e-mailaddress has been updated\n");
-				
-				break;
-			}
-		}
-
-		if(choice == 4){ // Field of study			
-			while(true){		
-				System.out.println("1 = Business");
-				System.out.println("2 = Social");
-				System.out.println("3 = Technical: ");
-				System.out.println("Your current field of study is: " + getFieldOfStudy());
-				System.out.print("Please enter your new field of study:");
-				
-				int newFieldOfStudy = Main.userInput3.nextInt();	
-				if(newFieldOfStudy != 1 && newFieldOfStudy != 2 && newFieldOfStudy != 3){
-					System.out.println("Please enter 1, 2 or 3");
-					continue;
-				}
-				setFieldOfStudy(newFieldOfStudy);
-
-				WriteFile.updateCandidate(this);
-				System.out.println("Your field of study has been updated\n");
-				
-				break;
-			}
-		}
+	}
+	public static void applyForVacancy(){
 		
-		/* TODO De rest van de choices kopieren plakken/ invullen!!!!!!  */
-		
+		while(true){
+			System.out.println("\nWould you like to apply for the position? (Y/N)");
+			char apply = Main.userInput1.next().charAt(0);
+			
+			if  (!(apply == 'Y') && !(apply == 'N') ) {
+				System.out.println("Please enter Y or N");
+				continue;
+			}	else if(apply == 'N') { 				// No: Back to main menu
+				
+				break;
+				
+			}	else if  (apply == 'Y') { 				// Yes: Applyen
+				System.out.println("Hier zijn we gestopt"); //hier komt de volgende stappen 
+			}
 
+
+		}
 	}
 	public static void getCandidateInfo(){	
 	}
@@ -422,6 +664,34 @@ public class Candidate extends User {
 	public void setFieldOfStudy(int fieldOfStudy){
 		this.fieldOfStudy = fieldOfStudy;
 	}
+	public void setExperience(int experience){
+		this.experience = experience;
+	}
+	public void setAvailability(int availability){
+		this.availability = availability;
+	}
+	public void setDutch(boolean dutch){
+		this.dutch = dutch;
+	}
+	public void setEnglish(boolean english){
+		this.english = english;
+	}
+	public void setGerman(boolean german){
+		this.german = german;
+	}
+	public void setmsOffice(boolean msOffice){
+		this.msOffice = msOffice;
+	}
+	public void setjavaScript(boolean javaScript){
+		this.javaScript = javaScript;
+	}
+	public void setsales(boolean sales){
+		this.sales = sales;
+	}
+	public void setmanagement(boolean management){
+		this.management = management;
+	}
+
 
 	//Getters
 	public int getFieldOfStudy() {

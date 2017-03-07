@@ -1,3 +1,4 @@
+
 package groupProject;
 
 /* 
@@ -13,16 +14,16 @@ package groupProject;
 public class Recruiter extends User {
 
 	private String company;
-	
+
 	public Recruiter(int userID, String logInName, String password, String name, String emailAddress, String company ){
 		setLogInName(logInName);
 		setPassword(password);
 		setName(name);
 		setEmailAddress(emailAddress);
 		this.company = company;
-		
+
 	}
-	
+
 	public static void recruiterLogIn(){
 		System.out.println("#####");
 		System.out.println("LOGIN as Recruiter");
@@ -50,7 +51,7 @@ public class Recruiter extends User {
 			}
 
 			Main.recruiter = tempRecruiter;
-			
+
 			break;
 		}
 	}
@@ -118,38 +119,145 @@ public class Recruiter extends User {
 			company = Main.userInput2.nextLine();
 
 			if(!company.equals("")) break;
-		
+
 		}
-		
+
 		WriteFile.addRecruiter(logInName, password, name, emailAddress, company);		
 		System.out.println("\nCongratulations! You are successfully registered as a recruiter and you can now login!");
-		
+
 		Recruiter.recruiterLogIn();
 	}
-	
-	
-	public static void setRecruiterInfo(){
-		
+
+	public void setRecruiterInfo(){
+		int choice = 0;
+		while(true){
+			System.out.println("\n#####################");
+			System.out.println("What do you want to do?");
+			System.out.println("1 = Change password");
+			System.out.println("2 = Change name");
+			System.out.println("3 = Change e-mailaddress");
+			System.out.println("4 = Change company");
+			System.out.println("5 = Back to main menu");
+
+			choice = Main.userInput3.nextInt();
+
+			if(choice == 1){	//password
+				while(true){
+					String newpassword = null;
+					while(true){
+						System.out.println("Your current password is: " + getPassword());
+						System.out.println("--------------------------");
+						System.out.print("Fill in your new password here: ");
+						newpassword = Main.userInput2.nextLine();
+
+						if(!newpassword.equals("")) break;
+
+					}
+					System.out.print("Repeat your new password: ");
+					String repeatnewpassword = Main.userInput2.nextLine();		
+
+					if(!repeatnewpassword.equals(newpassword)) {			
+						System.out.println("Your passwords do not match!");
+					}
+
+					Main.recruiter.setPassword(newpassword);
+
+					WriteFile.updateRecruiter(this);
+					System.out.println("Your password has been updated correctly."); 
+					System.out.println("Use it to log in next time");
+					break;
+				}
+
+			}
+			if(choice == 2){ // Name			
+				while(true){		
+					System.out.println("\nYour current name is: " + User.getName());
+					System.out.print("Please enter your new name: ");
+					String newname = Main.userInput2.nextLine();	
+
+					if(newname.equals("")){
+						System.out.println("Can't be empty!");
+						continue;
+					}
+					Main.recruiter.setName(newname);
+
+					WriteFile.updateRecruiter(this);
+					System.out.println("Your name has been updated correctly to " 
+							+ User.getName() + ".\n");
+					break;
+				}
+			}
+
+			if(choice == 3){ // Email address			
+				while(true){		
+					System.out.println("\nYour current e-mailaddress is: " + User.getEmailAddress());
+					System.out.print("Please enter your new e-mailaddress:");
+					String newemail = Main.userInput2.nextLine();	
+
+					if(newemail.equals("")){
+						System.out.println("Can't be empty!");
+						continue;
+					}
+					Main.recruiter.setEmailAddress(newemail);
+
+					WriteFile.updateRecruiter(this);
+					System.out.println("Your e-mailaddress has been updated correctly to " 
+							+ User.getEmailAddress() + ".\n");
+					break;
+
+				}
+			}
+
+			if(choice == 4){ // Company	
+				while(true){		
+					System.out.println("\nYour current company is: " + company);
+					System.out.print("Please enter your new company name: ");
+					String newcompany = Main.userInput2.nextLine();	
+
+					if(newcompany.equals("")){
+						System.out.println("Can't be empty!");
+						continue;
+					}
+					Main.recruiter.setCompany(newcompany);
+
+					WriteFile.updateRecruiter(this);
+					System.out.println("Your company has been updated correctly to " 
+							+ company + ".\n");
+					break;
+
+				}
+			}
+			
+			if(choice == 5){ // Go Back			
+				Main.runRecruiter();
+			}
+		}
 	}
 	
+	public static void runRecruiterVacancy(){
+		
+	}
 	public static void searchCandidates(){
-		
+
 	}
-	
+
 	public static void viewVacancies(){
 		// view recruiter vacancies
 	}
 
 	public static void viewApplications(){
-		
+
 	}
 
 	public static void setVacancy(){
-		
+
 	}
-	
+	public void setCompany(String company){
+		this.company = company;
+	}
+
 	public static void viewRecruiterInfo(){
-		
+
 	}
 	public String getCompany() {
 		return company;

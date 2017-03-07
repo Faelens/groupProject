@@ -151,5 +151,37 @@ public class WriteFile {
 		}		
 	}
 	
-	
+	public static void updateRecruiter(Recruiter recruiter) {
+
+		try {
+			String[] lines = new String[100];
+
+			BufferedReader br = new BufferedReader(new FileReader("Recruiters.txt"));			
+			String sCurrentLine;
+			String[] uCurrentLine = new String[6];
+
+			int counter = 0;
+			while((sCurrentLine = br.readLine()) != null){					
+				uCurrentLine = sCurrentLine.split("\t");			
+				// every time if statement not met, increment counter to know what line is read.
+				if(Integer.parseInt(uCurrentLine[0]) == recruiter.getUserID()){				
+					sCurrentLine = uCurrentLine[0] +"\t"+ User.getLoginName() +"\t"+ User.getPassword() +"\t"+ User.getName() +"\t"+ User.getEmailAddress() +"\t"+ recruiter.getCompany(); 				 
+				}
+				lines[counter] = sCurrentLine;		
+				counter++;
+			}
+			br.close();
+
+			// When the if statement is met, so the correct ID is found, update the line in the textfile.
+			PrintWriter wr = new PrintWriter(new BufferedWriter (new FileWriter("Recruiters.txt")));	
+
+			for(int i = 0; i < counter; i++){
+				wr.println(lines[i]);
+			}
+
+			wr.close();
+		} catch (IOException error) {
+			error.printStackTrace();
+		}		
+	}
 }

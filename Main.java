@@ -86,7 +86,7 @@ public class Main {
 			// Hier ga je verder als OF recruiter OF candidate
 			if (recruiterOrCandidate == 'A') runRecruiter();
 			else runCandidate();
-
+			break;
 		}
 
 
@@ -159,7 +159,7 @@ public class Main {
 				continue;
 			}
 			if (choice == 'E'){
-				Recruiter.setRecruiterInfo();
+				recruiter.setRecruiterInfo();
 				continue;
 			}
 			if (choice == 'F'){
