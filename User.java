@@ -17,6 +17,33 @@ public class User {
 
 	public static void viewVacancies(){
 		// view ALL vacancies
+		// Print list of all vacancies with ID
+		ReadFile.printAllVacancies();
+		
+		// Ask what ID user wants to see more information, or go back to main menu
+		while(true){
+		System.out.println("\nWould you like to see more information about a vacancy (A) or go back to main menu (B)?");
+		char choice = Main.userInput1.next().charAt(0);
+		
+		if (choice != 'A' && choice != 'B') {
+			System.out.println("Please choose A or B");
+		}
+		else if (choice == 'A') {
+			// Ask for vacancy
+			System.out.println("Please enter the vacancy number");
+			int vacancyID = Main.userInput3.nextInt();
+			
+			
+			Main.vacancy = ReadFile.getVacancyByVacancyID(vacancyID);
+			Main.vacancy.printVacancy();
+		}
+		else {
+			break;
+		}
+		
+		}
+		
+		
 	}
 
 	public static void searchVacancies(){

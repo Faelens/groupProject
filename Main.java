@@ -11,6 +11,8 @@ public class Main {
 	public static Candidate candidate; //These are objects from the classes to store the values put in by the user (WS5)
 	public static Recruiter recruiter;
 	public static User user;
+	public static Vacancy vacancy;
+	public static Application application;
 	public static Scanner userInput1 = new Scanner(System.in);	//Char
 	public static Scanner userInput2 = new Scanner(System.in);	//String
 	public static Scanner userInput3 = new Scanner(System.in);	//Int

@@ -105,6 +105,7 @@ public class ReadFile {
 					break;
 				}				
 			}
+			
 			br.close();
 		}
 		catch(IOException e){
@@ -112,5 +113,71 @@ public class ReadFile {
 		}
 
 		return recruiter;
+	}
+
+
+	public static void printAllVacancies() {
+
+		try{
+			BufferedReader br= new BufferedReader(new FileReader("Vacancy.txt"));
+			String sCurrentLine;
+			String[] uCurrentLine = new String[11];
+			
+			while((sCurrentLine = br.readLine()) != null){
+				uCurrentLine = sCurrentLine.split("\t");
+
+				System.out.println(uCurrentLine[0] + " - " + uCurrentLine[1]);
+				}
+			br.close();
+		}
+		catch(IOException error){
+			System.out.println("The file does not exist!");
+		}	
+		
+	}
+
+
+	public static Vacancy getVacancyByVacancyID(int vacancyID) {
+
+		Vacancy vacancy = null;
+
+		try{
+			BufferedReader br = new BufferedReader(new FileReader("Vacancy.txt"));
+			String sCurrentLine;
+			String[] uCurrentLine = new String[12];
+
+			while((sCurrentLine = br.readLine()) != null){
+				uCurrentLine = sCurrentLine.split("\t");
+
+				if(Integer.parseInt(uCurrentLine[0]) == vacancyID){
+
+					vacancy = new Vacancy(
+
+							Integer.parseInt(uCurrentLine[0]),
+							uCurrentLine[1],
+							Integer.parseInt(uCurrentLine[2]),
+							Integer.parseInt(uCurrentLine[3]),					
+							Boolean.parseBoolean(uCurrentLine[4]),
+							Boolean.parseBoolean(uCurrentLine[5]),			
+							Boolean.parseBoolean(uCurrentLine[6]),
+							Boolean.parseBoolean(uCurrentLine[7]),			
+							Boolean.parseBoolean(uCurrentLine[8]),
+							Boolean.parseBoolean(uCurrentLine[9]),			
+							Boolean.parseBoolean(uCurrentLine[10]),
+							Boolean.parseBoolean(uCurrentLine[11])
+							);
+
+					break;
+				}				
+			}
+			
+			br.close();
+		}
+		catch(IOException e){
+			System.out.println("The file does not exist!");
+		}
+
+		return vacancy;
+		
 	}
 }

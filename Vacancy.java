@@ -9,17 +9,16 @@ package groupProject;
  * [5] Dutch;
  * [6] English;
  * [7] German;
- * [8] French;
- * [9] MS Office;
- * [10] Javascript;
- * [11] Sales;
- * [12] Management
+ * [8] MS Office;
+ * [9] Javascript;
+ * [10] Sales;
+ * [11] Management
  */
 
 public class Vacancy {
 	private int vacancyID;
 	private String jobTitle;
-	private char fieldOfStudy;
+	private int fieldOfStudy;
 	private int requiredExperience;
 	private boolean preferredAvailability;
 	private boolean vacancyDutch;
@@ -27,10 +26,144 @@ public class Vacancy {
 	private boolean vacancyGerman;
 	private boolean vacancyMSOffice;
 	private boolean vacancyJavaScript;
+	private boolean vacancySales;
 	private boolean vacancyManagement;
 
+	public Vacancy(int vacancyID, String jobTitle, int fieldOfStudy, int requiredExperience, boolean preferredAvailability,
+			boolean vacancyDutch, boolean vacancyEnglish, boolean vacancyGerman, boolean vacancyMSOffice,
+			boolean vacancyJavaScript, boolean vacancySales, boolean vacancyManagement) {
+		setVacancyID(vacancyID);
+		setJobTitle(jobTitle);
+		setFieldOfStudy(fieldOfStudy);
+		setRequiredExperience(requiredExperience);
+		setPreferredAvailability(preferredAvailability);
+		setVacancyDutch(vacancyDutch);
+		setVacancyEnglish(vacancyEnglish);
+		setVacancyGerman(vacancyGerman);
+		setVacancyMSOffice(vacancyMSOffice);
+		setVacancyJavaScript(vacancyJavaScript);
+		setVacancySales(vacancySales);
+		setVacancyManagement(vacancyManagement);
+		
+	}
 	/*boolean[] vacancyLanguages = new boolean[4]; 
 
 	boolean[] vacancySkills = new boolean[4];
 	*/
+
+	public void printVacancy() {
+		
+		
+		System.out.println("Job title: " + getJobTitle());
+		System.out.println("Field of study: " + getFieldOfStudyByFieldOfStudy(getFieldOfStudy()));
+		System.out.println("Required experience: " + getRequiredExperience() + " years");
+		System.out.println("Preferred availability: " + getPreferredAvailabilityInText(getPreferredAvailability()));
+		System.out.println("Dutch: " + getSkill(getVacancyDutch()));
+		System.out.println("English: " + getSkill(getVacancyEnglish()));
+		System.out.println("German: " + getSkill(getVacancyGerman()));
+		System.out.println("MSOffice: " + getSkill(getVacancyMSOffice()));
+		System.out.println("JavaScript: " + getSkill(getVacancyJavaScript()));
+		System.out.println("Sales: " + getSkill(getVacancySales()));
+		System.out.println("Management: " + getSkill(getVacancyManagement()));
+		
+		
+	}
+	
+	public String getFieldOfStudyByFieldOfStudy(int fieldOfStudy) {
+		String text = null;
+		if (fieldOfStudy == 1 ) text = "Business";
+		if (fieldOfStudy == 2 ) text = "Social";
+		if (fieldOfStudy == 3 ) text = "Technical";
+		return text;
+	}
+
+	public String getPreferredAvailabilityInText(boolean preferredAvailability) {
+		String text = null;
+		if (preferredAvailability == true ) text = "Available immediately";
+		if (preferredAvailability == false ) text = "Not available immediately";
+		return text;
+	}
+	public String getSkill(boolean skill) {
+		String text = null;
+		if (skill == true ) text = "Yes";
+		if (skill == false ) text = "No";
+		return text;
+	}
+	
+	// Setters
+	public void setVacancyID(int vacancyID){
+		this.vacancyID = vacancyID;
+	}
+	public void setJobTitle(String jobTitle){
+		this.jobTitle = jobTitle;
+	}
+	public void setFieldOfStudy(int fieldOfStudy){
+		this.fieldOfStudy = fieldOfStudy;
+	}
+	public void setRequiredExperience(int requiredExperience){
+		this.requiredExperience = requiredExperience;
+	}
+	public void setPreferredAvailability(boolean preferredAvailability){
+		this.preferredAvailability = preferredAvailability;
+	}
+	public void setVacancyDutch(boolean vacancyDutch){
+		this.vacancyDutch = vacancyDutch;
+	}
+	public void setVacancyEnglish(boolean vacancyEnglish){
+		this.vacancyEnglish = vacancyEnglish;
+	}
+	public void setVacancyGerman(boolean vacancyGerman){
+		this.vacancyGerman = vacancyGerman;
+	}
+	public void setVacancyMSOffice(boolean vacancyMSOffice){
+		this.vacancyMSOffice = vacancyMSOffice;
+	}
+	public void setVacancyJavaScript(boolean vacancyJavaScript){
+		this.vacancyJavaScript = vacancyJavaScript;
+	}
+	public void setVacancySales(boolean vacancySales){
+		this.vacancySales = vacancySales;
+	}
+	public void setVacancyManagement(boolean vacancyManagement){
+		this.vacancyManagement = vacancyManagement;
+	}
+
+	//Getters
+	public int getVacancyID() {
+		return vacancyID;
+	}
+	public String getJobTitle() {
+		return jobTitle;
+	}
+	public int getFieldOfStudy() {
+		return fieldOfStudy;
+	}
+	public int getRequiredExperience() {
+		return requiredExperience;
+	}
+	public boolean getPreferredAvailability() {
+		return preferredAvailability;
+	}
+	public boolean getVacancyDutch() {
+		return vacancyDutch;
+	}
+	public boolean getVacancyEnglish() {
+		return vacancyEnglish;
+	}
+	public boolean getVacancyGerman() {
+		return vacancyGerman;
+	}
+	public boolean getVacancyMSOffice() {
+		return vacancyMSOffice;
+	}
+	public boolean getVacancyJavaScript() {
+		return vacancyJavaScript;
+	}
+	public boolean getVacancySales() {
+		return vacancySales;
+	}
+	public boolean getVacancyManagement() {
+		return vacancyManagement;
+	}
+
 }
