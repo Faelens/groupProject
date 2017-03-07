@@ -6,13 +6,127 @@ package groupProject;
  * [1] logInName;
  * [2] password;
  * [3] name;
- * [4] emailAdress;
+ * [4] emailAddress;
  * [5] company
  */
 
 public class Recruiter extends User {
 
-	String company;
+	private String company;
+	
+	public Recruiter(int userID, String logInName, String password, String name, String emailAddress, String company ){
+		setLogInName(logInName);
+		setPassword(password);
+		setName(name);
+		setEmailAddress(emailAddress);
+		this.company = company;
+		
+	}
+	
+	public static void recruiterLogIn(){
+		System.out.println("#####");
+		System.out.println("LOGIN as Recruiter");
+		System.out.println("#####");
+
+		Recruiter tempRecruiter = null;
+
+		while(true){
+			System.out.println("Log-in name: ");
+			String logInName = Main.userInput2.nextLine();
+
+			System.out.println("Password: ");
+			String password = Main.userInput2.nextLine();
+
+			tempRecruiter = ReadFile.getRecruiterbyLogInName(logInName);
+
+			if(tempRecruiter == null){
+				System.out.println("\nThis user does not exist!");
+				continue;
+			}
+
+			if(!tempRecruiter.getPassword().equals(password)){
+				System.out.println("\nThis password is not correct!");
+				continue;
+			}
+
+			Main.recruiter = tempRecruiter;
+			
+			break;
+		}
+	}
+
+	public static void recruiterRegistration(){
+		System.out.println("#####");
+		System.out.println("Register new Recruiter");
+		System.out.println("#####");
+
+		String logInName;
+		String password;
+		String name;
+		String emailAddress;
+		String company;
+
+
+		while(true){
+			System.out.print("Login-name: ");
+			logInName = Main.userInput2.nextLine();
+
+			if(logInName.equals("")){
+				System.out.println("Can't be empty!");
+				continue;
+			}
+
+			Recruiter tempRecruiter = ReadFile.getRecruiterbyLogInName(logInName);
+
+			if (tempRecruiter == null) break;
+
+			System.out.println("Please choose another name, this login-name is already taken!");
+		}
+
+		while(true){
+			while(true){
+				System.out.print("password: ");
+				password = Main.userInput2.nextLine();
+
+				if(!password.equals("")) break;
+
+			}
+			System.out.print("Repeat password: ");
+			String repeatpassword = Main.userInput2.nextLine();		
+			if(repeatpassword.equals(password)) break;			
+			System.out.println("Your passwords do not match!");
+		}
+
+		while(true){
+			System.out.print("name: ");
+			name = Main.userInput2.nextLine();
+
+			if(!name.equals("")) break;
+
+		}
+
+		while(true){
+			System.out.print("emailaddress: ");
+			emailAddress = Main.userInput2.nextLine();
+
+			if(!emailAddress.equals("")) break;
+
+		}
+
+		while(true){
+			System.out.print("Company: ");
+			company = Main.userInput2.nextLine();
+
+			if(!company.equals("")) break;
+		
+		}
+		
+		WriteFile.addRecruiter(logInName, password, name, emailAddress, company);		
+		System.out.println("\nCongratulations! You now have a recruiter account and you can now login!");
+		
+		Recruiter.recruiterLogIn();
+	}
+	
 	
 	public static void setRecruiterInfo(){
 		
@@ -36,6 +150,9 @@ public class Recruiter extends User {
 	
 	public static void viewRecruiterInfo(){
 		
+	}
+	public String getCompany() {
+		return company;
 	}
 
 }

@@ -17,13 +17,20 @@ package groupProject;
  */
 
 public class Vacancy {
-	int vacancyID;
-	String jobTitle;
-	char fieldOfStudy;
-	int requiredExperience;
-	boolean preferredAvailability;
+	private int vacancyID;
+	private String jobTitle;
+	private char fieldOfStudy;
+	private int requiredExperience;
+	private boolean preferredAvailability;
+	private boolean vacancyDutch;
+	private boolean vacancyEnglish;
+	private boolean vacancyGerman;
+	private boolean vacancyMSOffice;
+	private boolean vacancyJavaScript;
+	private boolean vacancyManagement;
 
-	boolean[] vacancyLanguages = new boolean[4]; 
+	/*boolean[] vacancyLanguages = new boolean[4]; 
 
 	boolean[] vacancySkills = new boolean[4];
+	*/
 }

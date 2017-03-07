@@ -1,8 +1,8 @@
 package groupProject;
 
 public class Application {
-	int applicationID;
-	Candidate candidate;
-	Vacancy vacancy;	
-	String motivation;
+	private int applicationID;
+	private Candidate candidate;
+	private Vacancy vacancy;	
+	private String motivation;
 }

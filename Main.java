@@ -8,16 +8,22 @@ import java.util.Scanner;
 
 public class Main {
 
+	public static Candidate candidate; //These are objects from the classes to store the values put in by the user (WS5)
+	public static Recruiter recruiter;
 	public static Scanner userInput1 = new Scanner(System.in);	//Char
 	public static Scanner userInput2 = new Scanner(System.in);	//String
-	public static char recruiterOrCandidate = 'B';
+	public static Scanner userInput3 = new Scanner(System.in);	//Int
+	public static Scanner userInput4 = new Scanner(System.in); // boolean
+
+
+	public static char recruiterOrCandidate = 'B';				//A = recruiter, B = candidate
 
 	public static void main(String[] args) throws IOException{
 
 		System.out.println("Welcome to the Recruiment System.");
 
 		while(true){
-			System.out.println("Do you already have an account? (Y/N)");
+			System.out.println("\nDo you already have an account? (Y/N)");
 			char accountYN = userInput1.next().charAt(0); 
 
 			if(accountYN != 'Y' && accountYN != 'N'){
@@ -37,34 +43,54 @@ public class Main {
 						System.out.println("\nThis is not a valid input! Please choose again.");
 						continue;
 					}
-					else if (recruiterOrCandidate == 'A'){
-						User.logIn();
+					else if (recruiterOrCandidate == 'B'){
+						Candidate.candidateLogIn();
 						break;
 					}
 					else {
-						User.logIn();
+						Recruiter.recruiterLogIn();
 						break;
 					}
 				}
 
-				break;
+			}
+			
+
+			else { 		// When answer is no --> start register process User.registerAccount(); 
+
+				while(true){	
+					System.out.println("\nDo you want to register as a recruiter (A) or a candidate (B)?"); // ask if you want to register as candidate/recruiter
+					recruiterOrCandidate = userInput1.next().charAt(0); 
+
+					if(recruiterOrCandidate != 'A' && recruiterOrCandidate != 'B'){
+						System.out.println("\nThis is not a valid input! Please choose again.");
+						continue;
+					}
+					else if (recruiterOrCandidate == 'B'){
+						Candidate.candidateRegistration();													// Register a candidate 
+						break;
+					}
+					else {
+						//Recruiter.recruiterRegistration();	//												// Register a recruiter
+						Recruiter.recruiterRegistration();
+						break;
+					}
+					
+				}
+				
 			}
 
-			else { 
-				// User.registerAccount();
+			// Hier ga je verder als OF recruiter OF candidate
+			if (recruiterOrCandidate == 'A') runRecruiter();
+			else runCandidate();
 
-				break;
-			}
 		}
 
-		// Hier ga je verder als OF recruiter OF candidate
-		if (recruiterOrCandidate == 'A') runRecruiter();
-		else runCandidate();
 
 	}
 
 	public static void runCandidate() {
-		System.out.print("\nWelcome " + User.name + "! ");
+		System.out.print("\nWelcome " + User.getName() + "! ");
 		while (true){
 			System.out.println("What would you like to do?");
 			System.out.println("A = Update profile information");
@@ -102,7 +128,7 @@ public class Main {
 	}
 
 	public static void runRecruiter() {
-		System.out.print("\nWelcome " + User.name + "! ");
+		System.out.print("\nWelcome " + User.getName() + "! ");
 		while (true){
 			System.out.println("What would you like to do?");
 			System.out.println("A = Create a vacancy");
