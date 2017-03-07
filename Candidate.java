@@ -183,81 +183,137 @@ public class Candidate extends User {
 		}
 
 		while(true){
-			System.out.print("Do you speak Dutch? ( true or false )"); 
-			dutch = Main.userInput4.nextBoolean();							// maybe need to change to int scanner
+			System.out.print("Do you speak Dutch? ( Y/N )"); 
+			char temp = 'Z';
+			temp = Main.userInput1.next().charAt(0);							// maybe need to change to int scanner
 
-			if( dutch == true || dutch == false ) break;
+			if( temp == 'Y') { 
+				dutch = true;
+				break;
+			}
+			else if( temp == 'N') { 
+				dutch = false;
+				break;
+			}
 
-			System.out.println("Please enter true or false");
+			else {System.out.println("Please enter Y or N");}
 		}
 
 
 
 
 		while(true){
-			System.out.print("Do you speak English? (true or false) "); 
-			english = Main.userInput4.nextBoolean();							// maybe need to change to int scanner
+			System.out.print("Do you speak English? ( Y/N )"); 
+			char temp = 'Z';
+			temp = Main.userInput1.next().charAt(0);							// maybe need to change to int scanner
 
-			if( english == true || english == false ) break;
+			if( temp == 'Y') { 
+				english = true;
+				break;
+			}
+			else if( temp == 'N') { 
+				english = false;
+				break;
+			}
 
-			System.out.println("Please enter true or false");
+			else {System.out.println("Please enter Y or N");}
 		}
 
 
 
 
 		while(true){
-			System.out.print("Do you speak German? (true or false) "); 
-			german = Main.userInput4.nextBoolean();							// maybe need to change to int scanner
+			System.out.print("Do you speak German? ( Y/N )"); 
+			char temp = 'Z';
+			temp = Main.userInput1.next().charAt(0);							// maybe need to change to int scanner
 
-			if( german == true || german == false ) break;
+			if( temp == 'Y') { 
+				german = true;
+				break;
+			}
+			else if( temp == 'N') { 
+				german = false;
+				break;
+			}
 
-			System.out.println("Please enter true or false");
+			else {System.out.println("Please enter Y or N");}
 		}
 
 
 
 		while(true){
-			System.out.print("Do you have MS Office skills? (true or false) "); 
-			msOffice = Main.userInput4.nextBoolean();							// maybe need to change to int scanner
+			System.out.print("Do you have MS Office skills? ( Y/N )"); 
+			char temp = 'Z';
+			temp = Main.userInput1.next().charAt(0);							// maybe need to change to int scanner
 
-			if( msOffice == true || msOffice == false ) break;
+			if( temp == 'Y') { 
+				msOffice = true;
+				break;
+			}
+			else if( temp == 'N') { 
+				msOffice = false;
+				break;
+			}
 
-			System.out.println("Please enter true or false");
+			else {System.out.println("Please enter Y or N");}
 
 		}
 
 
 
 		while(true){
-			System.out.print("Do you have Javascript skills? (true or false) "); 
-			javaScript = Main.userInput4.nextBoolean();							// maybe need to change to int scanner
+			System.out.print("Do you have Javascript skills? ( Y/N )"); 
+			char temp = 'Z';
+			temp = Main.userInput1.next().charAt(0);							// maybe need to change to int scanner
 
-			if( javaScript == true || javaScript == false ) break;
+			if( temp == 'Y') { 
+				javaScript = true;
+				break;
+			}
+			else if( temp == 'N') { 
+				javaScript = false;
+				break;
+			}
 
-			System.out.println("Please enter true or false");
+			else {System.out.println("Please enter Y or N");}
 		}
 
 
 
 		while(true){
-			System.out.print("Do you have sales skills? (true or false) "); 
-			sales = Main.userInput4.nextBoolean();							// maybe need to change to int scanner
+			System.out.print("Do you have sales skills? ( Y/N )"); 
+			char temp = 'Z';
+			temp = Main.userInput1.next().charAt(0);							// maybe need to change to int scanner
 
-			if( sales == true || sales == false ) break;
+			if( temp == 'Y') { 
+				sales = true;
+				break;
+			}
+			else if( temp == 'N') { 
+				sales = false;
+				break;
+			}
 
-			System.out.println("Please enter true or false");
+			else {System.out.println("Please enter Y or N");}
 		}
 
 
 
 		while(true){
-			System.out.print("Do you have management skills? (true or false) "); 
-			management = Main.userInput4.nextBoolean();						// maybe need to change to int scanner
+			System.out.print("Do you have management skills? ( Y/N )"); 
+			char temp = 'Z';
+			temp = Main.userInput1.next().charAt(0);							// maybe need to change to int scanner
 
-			if( management == true || management == false ) break;
+			if( temp == 'Y') { 
+				management = true;
+				break;
+			}
+			else if( temp == 'N') { 
+				management = false;
+				break;
+			}
 
-			System.out.println("Please enter true or false");	
+			else {System.out.println("Please enter Y or N");}
 
 		}
 
@@ -272,78 +328,82 @@ public class Candidate extends User {
 
 
 
-	public static void setCandidateInfo(){
+	public void setCandidateInfo(){
+		int choice = 0;
+
 		System.out.println("\n####################");
-		System.out.println("1 = Login-name");
-		System.out.println("2 = Password");
-		System.out.println("3 etc");
-		System.out.println("Which information do you want to update?");
-		System.out.println("Which information do you want to update?");
-		System.out.println("Which information do you want to update?");
-		System.out.println("Which information do you want to update?");
-		System.out.println("Which information do you want to update?");
-		System.out.println("Which information do you want to update?");
-		System.out.println("Which information do you want to update?");
-		System.out.println("Which information do you want to update?");
-		System.out.println("go back?");
+		System.out.println("What information would you like to update?");
+		System.out.println("1 = Password");
+		System.out.println("2 = Name");
+		System.out.println("3 = E-mailaddress");
+		System.out.println("4 = Field of study");
+		System.out.println("5 = Experience");
+		System.out.println("6 = Availability");
+		System.out.println("7 = Languages");
+		System.out.println("8 = Skills");
+		System.out.println("9 = Back to main menu");
 
+		choice = Main.userInput3.nextInt();
 
-		if(choice == '1'){ //do stuff			
+		if(choice == 2){ // Name			
 			while(true){		
-				System.out.println("\nHow much do you want to add?");
-				try{		
-					String newlogin = userInput2.nextLine();				
-					User.setLogInName(newlogin);
-					
-					System.out.println("Your login-name has been updated");
-					break;
+				System.out.println("\nYour current name is: " + User.getName());
+				System.out.print("Please enter your new name:");
+				String newname = Main.userInput2.nextLine();	
+
+				if(newname.equals("")){
+					System.out.println("Can't be empty!");
+					continue;
+				}
+				User.setName(newname);
+
+				WriteFile.updateCandidate(this);
+				System.out.println("Your name has been updated");
 				
-				}catch(Exception e){
-					System.out.println("This is not a valid number");
-				}			
-
-
-			
-		}
-		public static void getCandidateInfo(){	
-		}
-		public static void viewApplications(){
-		}
-		public static void applyToApplication(){	
-		}
-
-		//SETTERS
-		
-		//Getters
-		public int getfieldOfStudy() {
-			return fieldOfStudy;
-		}
-		public int getExperience() {
-			return experience;
-		}
-		public int getAvailability() {
-			return availability;
-		}
-		public boolean getDutch() {
-			return dutch;
-		}
-		public boolean getEnglish() {
-			return english;
-		}
-		public boolean getGerman() {
-			return german;
-		}
-		public boolean getMSOffice() {
-			return msOffice;
-		}
-		public boolean getJavaScript() {
-			return javaScript;
-		}
-		public boolean getSales() {
-			return sales;
-		}
-		public boolean getManagement() {
-			return management;
+				break;
+			}
 		}
 
 	}
+	public static void getCandidateInfo(){	
+	}
+	public static void viewApplications(){
+	}
+	public static void applyToApplication(){	
+	}
+
+	//SETTERS
+
+	//Getters
+	public int getFieldOfStudy() {
+		return fieldOfStudy;
+	}
+	public int getExperience() {
+		return experience;
+	}
+	public int getAvailability() {
+		return availability;
+	}
+	public boolean getDutch() {
+		return dutch;
+	}
+	public boolean getEnglish() {
+		return english;
+	}
+	public boolean getGerman() {
+		return german;
+	}
+	public boolean getMSOffice() {
+		return msOffice;
+	}
+	public boolean getJavaScript() {
+		return javaScript;
+	}
+	public boolean getSales() {
+		return sales;
+	}
+	public boolean getManagement() {
+		return management;
+	}
+
+}

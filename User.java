@@ -31,7 +31,7 @@ public class User {
 		this.password = password;
 	}
 	public void setName(String name){
-		this.name = name;
+		User.name = name;
 	}	
 	public void setEmailAddress(String emailAddress){
 		this.emailAddress = emailAddress;

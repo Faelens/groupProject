@@ -10,6 +10,7 @@ public class Main {
 
 	public static Candidate candidate; //These are objects from the classes to store the values put in by the user (WS5)
 	public static Recruiter recruiter;
+	public static User user;
 	public static Scanner userInput1 = new Scanner(System.in);	//Char
 	public static Scanner userInput2 = new Scanner(System.in);	//String
 	public static Scanner userInput3 = new Scanner(System.in);	//Int
@@ -101,7 +102,7 @@ public class Main {
 			char choice = userInput1.next().charAt(0); 
 
 			if (choice == 'A'){
-				Candidate.setCandidateInfo();
+				candidate.setCandidateInfo();
 				continue;
 			}
 			if (choice == 'B'){
@@ -157,7 +158,7 @@ public class Main {
 			}
 			if (choice == 'E'){
 				Recruiter.setRecruiterInfo();
-				break;
+				continue;
 			}
 			if (choice == 'F'){
 				User.logOut();

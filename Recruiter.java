@@ -122,7 +122,7 @@ public class Recruiter extends User {
 		}
 		
 		WriteFile.addRecruiter(logInName, password, name, emailAddress, company);		
-		System.out.println("\nCongratulations! You now have a recruiter account and you can now login!");
+		System.out.println("\nCongratulations! You are successfully registered as a recruiter and you can now login!");
 		
 		Recruiter.recruiterLogIn();
 	}

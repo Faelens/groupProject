@@ -54,8 +54,8 @@ public class WriteFile {
 		 * [4] emailAddress;
 		 * [5] company
 		 */
-		
-		
+
+
 		try {
 
 			int nextUserID = getNextId("Recruiters.txt");
@@ -96,4 +96,60 @@ public class WriteFile {
 
 		return nextUserID;
 	}
+	
+
+	public static void updateCandidate(Candidate candidate) {
+		/* 
+		 * Fields in the TXT file:
+		 * [0] userID;
+		 * [1] logInName;
+		 * [2] password;
+		 * [3] name;
+		 * [4] emailAdress;
+		 * [5] fieldOfStudy;
+		 * [6] experience;
+		 * [7] availability;
+		 * [8] Dutch;
+		 * [9] English;
+		 * [10] German;
+		 * [11] MS Office;
+		 * [12] Javascript;
+		 * [13] Sales;
+		 * [14] Management
+		 */
+		
+		try {
+			String[] lines = new String[100];
+
+			BufferedReader br = new BufferedReader(new FileReader("Candidates.txt"));			
+			String sCurrentLine;
+			String[] uCurrentLine = new String[15];
+			
+			int counter = 0;
+			while((sCurrentLine = br.readLine()) != null){					
+				uCurrentLine = sCurrentLine.split("\t");			
+				// every time if statement not met, increment counter to know what line is read.
+				if(Integer.parseInt(uCurrentLine[0]) == User.getUserID()){				
+					sCurrentLine = uCurrentLine[0] +"\t"+ User.getLoginName() +"\t"+ User.getPassword() +"\t"+ User.getName() +"\t"+ User.getEmailAddress() +"\t"+ candidate.getFieldOfStudy() +"\t"+ candidate.getExperience() +"\t"+ 
+							candidate.getAvailability() +"\t"+ candidate.getDutch() +"\t"+ candidate.getEnglish() +"\t"+ candidate.getGerman() +"\t"+ candidate.getMSOffice() +"\t"+ candidate.getJavaScript() +"\t"+ candidate.getSales() +"\t"+ candidate.getManagement();				 
+				}
+				lines[counter] = sCurrentLine;		
+				counter++;
+			}
+			br.close();
+			
+			// When the if statement is met, so the correct ID is found, update the line in the textfile.
+			PrintWriter wr = new PrintWriter(new BufferedWriter (new FileWriter("Candidates.txt")));	
+			
+			for(int i = 0; i < counter; i++){
+				wr.println(lines[i]);
+			}
+			
+			wr.close();
+		} catch (IOException error) {
+			error.printStackTrace();
+		}		
+	}
+	
+	
 }
