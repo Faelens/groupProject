@@ -108,11 +108,14 @@ public class Main {
 				continue;
 			}
 			if (choice == 'B'){
+				// view ALL vacancies
+				// Print list of all vacancies with ID
+				ReadFile.printAllVacancies();
 				User.viewVacancies();
 				continue;
 			}
 			if (choice == 'C'){
-				User.searchVacancies();
+				Candidate.filterVacancies();
 				continue;
 			}
 			if (choice == 'D'){

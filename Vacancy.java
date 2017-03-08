@@ -47,7 +47,6 @@ public class Vacancy {
 		
 	}
 	/*boolean[] vacancyLanguages = new boolean[4]; 
-
 	boolean[] vacancySkills = new boolean[4];
 	*/
 

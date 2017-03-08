@@ -13,28 +13,21 @@ public class User {
 
 	public static void logOut(){
 		// Print a bye bye statement with a cool picture ASCII
-		System.out.println("★─▄█▀▀║░▄█▀▄║▄█▀▄║██▀▄║─★");
-		System.out.println("★─██║▀█║██║█║██║█║██║█║─★");
-		System.out.println("★─▀███▀║▀██▀║▀██▀║███▀║─★");
-		System.out.println("★───────────────────────★");
-		System.out.println("★───▐█▀▄─ ▀▄─▄▀ █▀▀──█───★");
-		System.out.println("★───▐█▀▀▄ ──█── █▀▀──▀───★");
-		System.out.println("★───▐█▄▄▀ ──▀── ▀▀▀──▄───★");
-
+		System.out.println("Bye bye!");
 	}
 
 	public static void viewVacancies(){
-		// view ALL vacancies
-		// Print list of all vacancies with ID
-		ReadFile.printAllVacancies();
 
 		// Ask what ID user wants to see more information, or go back to main menu
+
+		System.out.println("\nWould you like to see more information about a vacancy (A) or go back to main menu (B)?");
+		
 		while(true){
-			System.out.println("\nWould you like to see more information about a vacancy (A) or go back to main menu (B)?");
 			char choice = Main.userInput1.next().charAt(0);
 
 			if (choice != 'A' && choice != 'B') {
 				System.out.println("Please choose A or B");
+				continue;
 			}
 			else if (choice == 'A') {
 				// Ask for vacancy
@@ -55,9 +48,6 @@ public class User {
 		}
 
 
-	}
-
-	public static void searchVacancies(){
 	}
 
 	//Setters

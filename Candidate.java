@@ -633,24 +633,111 @@ public class Candidate extends User {
 		}
 	}
 	public static void applyForVacancy(){
-		
+		System.out.println("\nWould you like to apply for the position? (Y/N)");
+
 		while(true){
-			System.out.println("\nWould you like to apply for the position? (Y/N)");
 			char apply = Main.userInput1.next().charAt(0);
-			
 			if  (!(apply == 'Y') && !(apply == 'N') ) {
 				System.out.println("Please enter Y or N");
 				continue;
 			}	else if(apply == 'N') { 				// No: Back to main menu
-				
+
 				break;
-				
+
 			}	else if  (apply == 'Y') { 				// Yes: Applyen
-				System.out.println("Hier zijn we gestopt"); //hier komt de volgende stappen 
+				String motivation = null;
+				System.out.println("Please fill out your motivation here:"); 
+				motivation = (Main.userInput2.nextLine());
+				WriteFile.addApplication(Main.candidate.getUserID(), Main.vacancy.getVacancyID(), motivation);
+				System.out.println("\nYou have succesfully applied to the position of " + Main.vacancy.getJobTitle() + ".\n");
+				break;
 			}
-
-
 		}
+	}
+	public static void filterVacancies(){
+		outerloop:
+			while(true){
+				System.out.println("What do you want to filter on?");
+				System.out.println("A = Field of study");
+				System.out.println("B = Years of experience");
+				System.out.println("C = Skills required");
+				System.out.println("D = Go back to main menu");
+
+				while(true){
+					char filter = Main.userInput1.next().charAt(0);
+					if  (!(filter == 'A') && !(filter == 'B') && !(filter == 'C') && !(filter == 'D')) {
+						System.out.println("Please enter A, B, C or D");
+						continue;
+					} else if (filter == 'A'){
+						System.out.println("What field of study would you like to filter on?");
+						System.out.println("A = Business");
+						System.out.println("B = Social");
+						System.out.println("C = Technical");
+
+						while(true){
+							char studyfilter = Main.userInput1.next().charAt(0);
+							if  (!(studyfilter == 'A') && !(studyfilter == 'B') && !(studyfilter == 'C')) {
+								System.out.println("Please enter A, B, or C");
+								continue;
+							} else if (studyfilter == 'A'){
+								System.out.println("The following vacancies require a business background:");
+								ReadFile.getVacanciesByFieldOfStudy(1);
+								viewVacancies();
+								break outerloop;
+							} else if (studyfilter == 'B'){
+								System.out.println("The following vacancies require a social background:");
+								ReadFile.getVacanciesByFieldOfStudy(2);
+								viewVacancies();
+								break outerloop;
+							} else {
+								System.out.println("The following vacancies require a technical background:");
+								ReadFile.getVacanciesByFieldOfStudy(3);
+								viewVacancies();
+								break outerloop;
+							}
+						}
+					}else if (filter == 'B'){
+						System.out.println("\nWith your " + Main.candidate.getExperience() + " years of experience you fit the following vacancies:");
+						ReadFile.getVacanciesByExperience(Main.candidate.getExperience());
+						viewVacancies();
+						break outerloop;
+					}else if (filter == 'C'){
+						System.out.println("What skills would you like to filter on?");
+						System.out.println("A = MS Office");
+						System.out.println("B = JavaScript");
+						System.out.println("C = Sales");
+						System.out.println("D = Management");
+						
+						while(true){
+							char skillfilter = Main.userInput1.next().charAt(0);
+							if  (!(skillfilter == 'A') && !(skillfilter == 'B') && !(skillfilter == 'C') && !(skillfilter == 'D')) {
+								System.out.println("Please enter A, B, C or D");
+								continue;
+							} else if (skillfilter == 'A'){
+								System.out.println("The following vacancies require MS Office skills:");
+								ReadFile.getVacanciesBySkill(8);
+								viewVacancies();
+								break outerloop;
+							} else if (skillfilter == 'B'){
+								System.out.println("The following vacancies require JavaScript skills:");
+								ReadFile.getVacanciesBySkill(9);
+								viewVacancies();
+								break outerloop;
+							} else if (skillfilter == 'C'){
+								System.out.println("The following vacancies require sales skills:");
+								ReadFile.getVacanciesBySkill(10);
+								viewVacancies();
+								break outerloop;
+							} else {
+								System.out.println("The following vacancies require management skills:");
+								ReadFile.getVacanciesBySkill(11);
+								viewVacancies();
+								break outerloop;
+							}
+						}
+					}
+				}
+			}
 	}
 	public static void getCandidateInfo(){	
 	}

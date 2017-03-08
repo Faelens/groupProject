@@ -105,7 +105,7 @@ public class ReadFile {
 					break;
 				}				
 			}
-			
+
 			br.close();
 		}
 		catch(IOException e){
@@ -122,18 +122,18 @@ public class ReadFile {
 			BufferedReader br= new BufferedReader(new FileReader("Vacancy.txt"));
 			String sCurrentLine;
 			String[] uCurrentLine = new String[11];
-			
+
 			while((sCurrentLine = br.readLine()) != null){
 				uCurrentLine = sCurrentLine.split("\t");
 
 				System.out.println(uCurrentLine[0] + " - " + uCurrentLine[1]);
-				}
+			}
 			br.close();
 		}
 		catch(IOException error){
 			System.out.println("The file does not exist!");
 		}	
-		
+
 	}
 
 
@@ -170,7 +170,7 @@ public class ReadFile {
 					break;
 				}				
 			}
-			
+
 			br.close();
 		}
 		catch(IOException e){
@@ -178,6 +178,75 @@ public class ReadFile {
 		}
 
 		return vacancy;
+
+	}
+
+	public static void getVacanciesByFieldOfStudy(int studyfilter){
+		try{
+			BufferedReader br = new BufferedReader(new FileReader("Vacancy.txt"));
+			String sCurrentLine;
+			String[] uCurrentLine = new String[12];
+			
+			while((sCurrentLine = br.readLine()) != null){
+				uCurrentLine = sCurrentLine.split("\t");
+
+				if(Integer.parseInt(uCurrentLine[2]) == studyfilter){
+					
+					System.out.println(uCurrentLine[0] + " - " + uCurrentLine[1]);
+				}
+			}				
+
+			br.close();
+		}
+		catch(IOException e){
+			System.out.println("The file does not exist!");
+		}
+
+	}
+
+
+	public static void getVacanciesByExperience(int experience) {
+		try{
+			BufferedReader br = new BufferedReader(new FileReader("Vacancy.txt"));
+			String sCurrentLine;
+			String[] uCurrentLine = new String[12];
+			
+			while((sCurrentLine = br.readLine()) != null){
+				uCurrentLine = sCurrentLine.split("\t");
+
+				if(Integer.parseInt(uCurrentLine[3]) <= experience){
+					
+					System.out.println(uCurrentLine[0] + " - " + uCurrentLine[1]);
+				}
+			}				
+
+			br.close();
+		}
+		catch(IOException e){
+			System.out.println("The file does not exist!");
+		}
 		
+	}
+	
+	public static void getVacanciesBySkill(int rowNumber) {
+		try{
+			BufferedReader br = new BufferedReader(new FileReader("Vacancy.txt"));
+			String sCurrentLine;
+			String[] uCurrentLine = new String[12];
+			
+			while((sCurrentLine = br.readLine()) != null){
+				uCurrentLine = sCurrentLine.split("\t");
+
+				if(Boolean.parseBoolean(uCurrentLine[rowNumber]) == true){
+					
+					System.out.println(uCurrentLine[0] + " - " + uCurrentLine[1]);
+				}
+			}				
+
+			br.close();
+		}
+		catch(IOException e){
+			System.out.println("The file does not exist!");
+		}
 	}
 }

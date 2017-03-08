@@ -184,4 +184,24 @@ public class WriteFile {
 			error.printStackTrace();
 		}		
 	}
+	public static void addApplication(int candidateID, int vacancyID, String motivation){
+		/* 
+		 * Fields in the TXT file:
+		 * [0] applicationID;
+		 * [1] candidateID;
+		 * [2] vacancyUD;
+		 * [3] motivation;
+		 */
+		try {
+			int nextApplicationID = getNextId("Applications.txt");
+			// Initialize applications.txt as file to read
+			PrintWriter wr = new PrintWriter(new BufferedWriter (new FileWriter("Applications.txt", true)));	//True means it's going to add it to the existing file instead of creating a new one					
+			String newLine = (nextApplicationID + "\t" + candidateID + "\t" + vacancyID + "\t" + motivation); 			 
+
+			wr.println(newLine);
+			wr.close();	
+		} catch (IOException e) {
+			e.printStackTrace();								// catches errors and shows where you can find the error
+		}		
+	}
 }

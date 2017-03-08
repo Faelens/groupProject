@@ -7,10 +7,10 @@ public class Application {
 	private String motivation;
 	
 	public Application(int applicationID, Candidate candidate, Vacancy vacancy, String motivation) {
-		setApplicationID(applicationID);
+		this.applicationID = applicationID;
 		this.candidate = candidate;
 		this.vacancy = vacancy;
-		setMotivation(motivation);
+		this.motivation = motivation;
 	}
 	
 	// Setters
