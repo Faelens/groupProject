@@ -71,7 +71,7 @@ public class Vacancy {
 		
 	}
 	
-	public String getFieldOfStudyByFieldOfStudy(int fieldOfStudy) {
+	public static  String getFieldOfStudyByFieldOfStudy(int fieldOfStudy) {
 		String text = null;
 		if (fieldOfStudy == 1 ) text = "Business";
 		if (fieldOfStudy == 2 ) text = "Social";
@@ -85,7 +85,7 @@ public class Vacancy {
 		if (preferredAvailability == false ) text = "Not available immediately";
 		return text;
 	}
-	public String getSkill(boolean skill) {
+	public static String getSkill(boolean skill) {
 		String text = null;
 		if (skill == true ) text = "Yes";
 		if (skill == false ) text = "No";

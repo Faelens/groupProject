@@ -34,7 +34,6 @@ public class User {
 				// Find vacancy by id and print details
 				Main.vacancy = ReadFile.getVacancyByVacancyID(vacancyID);
 				Main.vacancy.printVacancy();
-				if (Main.recruiterOrCandidate == 'A') Recruiter.runRecruiterVacancy();
 				if (Main.recruiterOrCandidate == 'B') Candidate.applyForVacancy();
 				break;
 			}

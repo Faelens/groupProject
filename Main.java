@@ -139,7 +139,7 @@ public class Main {
 			System.out.println("What would you like to do?");
 			System.out.println("A = Create a vacancy");
 			System.out.println("B = View your vacancies");
-			System.out.println("C = Search candidates");
+			System.out.println("C = Filter candidates");
 			System.out.println("D = See applications");
 			System.out.println("E = Update profile information");
 			System.out.println("F = Logout");
@@ -154,7 +154,7 @@ public class Main {
 				continue;
 			}
 			if (choice == 'C'){
-				Recruiter.searchCandidates();
+				Recruiter.filterCandidates();
 				continue;
 			}
 			if (choice == 'D'){

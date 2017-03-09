@@ -13,17 +13,17 @@ package groupProject;
  * [8] Dutch;
  * [9] English;
  * [10] German;
- * [12] MS Office;
- * [13] Javascript;
- * [14] Sales;
- * [15] Management
+ * [11] MS Office;
+ * [12] Javascript;
+ * [13] Sales;
+ * [14] Management
  */
 
 public class Candidate extends User {
 
 	private int fieldOfStudy;			//1 = Business, 2 = Social, 3 = Technical 
 	private int experience;
-	private int availability;		//1 = Available, 2 = Unavailable (currently employed)
+	private int availability;			//1 = Available, 2 = Unavailable (currently employed)
 	private boolean dutch;
 	private boolean english;
 	private boolean german;
@@ -61,7 +61,6 @@ public class Candidate extends User {
 		while(true){
 			System.out.println("Log-in name: ");
 			String logInName = Main.userInput2.nextLine();
-
 			System.out.println("Password: ");
 			String password = Main.userInput2.nextLine();
 
@@ -71,14 +70,11 @@ public class Candidate extends User {
 				System.out.println("\nThis user does not exist!");
 				continue;
 			}
-
-			if(!tempCandidate.getPassword().equals(password)){
+			if(!getPassword().equals(password)){
 				System.out.println("\nThis password is not correct!");
 				continue;
 			}
-
 			Main.candidate = tempCandidate;
-
 			break;
 		}
 	}
@@ -103,91 +99,64 @@ public class Candidate extends User {
 		boolean sales;
 		boolean management;
 
-
 		while(true){
 			System.out.print("Login-name: ");
 			logInName = Main.userInput2.nextLine();
-
 			if(logInName.equals("")){
 				System.out.println("Can't be empty!");
 				continue;
 			}
-
 			Candidate tempCandidate = ReadFile.getCandidatebyLogInName(logInName);
-
 			if (tempCandidate == null) break;
-
 			System.out.println("Please choose another name, this login-name is already taken!");
 		}
-
 		while(true){
 			while(true){
 				System.out.print("password: ");
 				password = Main.userInput2.nextLine();
-
 				if(!password.equals("")) break;
-
 			}
 			System.out.print("Repeat password: ");
 			String repeatpassword = Main.userInput2.nextLine();		
 			if(repeatpassword.equals(password)) break;			
 			System.out.println("Your passwords do not match!");
 		}
-
 		while(true){
 			System.out.print("name: ");
 			name = Main.userInput2.nextLine();
-
 			if(!name.equals("")) break;
-
 		}
-
 		while(true){
 			System.out.print("emailaddress: ");
 			emailAddress = Main.userInput2.nextLine();
-
 			if(!emailAddress.equals("")) break;
-
 		}
-
 		while(true){
 			System.out.println("What is you field of study? : ");
 			System.out.println("1 = Business");
 			System.out.println("2 = Social");
 			System.out.println("3 = Technical: ");
 			fieldOfStudy = Main.userInput3.nextInt();
-
 			if(fieldOfStudy == 1 || fieldOfStudy == 2 || fieldOfStudy == 3) break;
-
 			System.out.println("Please enter 1 , 2 or 3");
-
 		}
-
 		while(true){
 			System.out.print("How many years of workexperience do you have? (please enter the amount of years) : ");
 			experience = (int) Main.userInput3.nextInt();
-
 			if(experience>= 0) break;
-
 			System.out.println("Please enter a positive number");
-
 		} 
-
 		while(true){
 			System.out.print("Are you available to start rightaway? (1 = yes ; 2 = no )"); // maybe we need to change this to a boolean
 			availability = (int) Main.userInput3.nextInt();
-
 			if(availability == 1 || availability == 2) break;
-
 			System.out.println("Please enter 1 (yes) or a 2 (no)");
-
 		}
 
 		while(true){
 			System.out.print("Do you speak Dutch? ( Y/N )"); 
 			char temp = 'Z';
 			temp = Main.userInput1.next().charAt(0);							// maybe need to change to int scanner
-
 			if( temp == 'Y') { 
 				dutch = true;
 				break;
@@ -196,18 +165,12 @@ public class Candidate extends User {
 				dutch = false;
 				break;
 			}
-
 			else {System.out.println("Please enter Y or N");}
 		}
-
-
-
-
 		while(true){
 			System.out.print("Do you speak English? ( Y/N )"); 
 			char temp = 'Z';
 			temp = Main.userInput1.next().charAt(0);							// maybe need to change to int scanner
-
 			if( temp == 'Y') { 
 				english = true;
 				break;
@@ -216,32 +179,20 @@ public class Candidate extends User {
 				english = false;
 				break;
 			}
-
 			else {System.out.println("Please enter Y or N");}
 		}
-
-
-
-
 		while(true){
 			System.out.print("Do you speak German? ( Y/N )"); 
 			char temp = 'Z';
 			temp = Main.userInput1.next().charAt(0);							// maybe need to change to int scanner
-
 			if( temp == 'Y') { 
 				german = true;
 				break;
-			}
-			else if( temp == 'N') { 
+			} else if( temp == 'N') { 
 				german = false;
 				break;
-			}
-
-			else {System.out.println("Please enter Y or N");}
+			} else {System.out.println("Please enter Y or N");}
 		}
-
-
-
 		while(true){
 			System.out.print("Do you have MS Office skills? ( Y/N )"); 
 			char temp = 'Z';
@@ -250,84 +201,52 @@ public class Candidate extends User {
 			if( temp == 'Y') { 
 				msOffice = true;
 				break;
-			}
-			else if( temp == 'N') { 
+			} else if( temp == 'N') { 
 				msOffice = false;
 				break;
-			}
-
-			else {System.out.println("Please enter Y or N");}
-
+			} else {System.out.println("Please enter Y or N");}
 		}
-
-
-
 		while(true){
 			System.out.print("Do you have Javascript skills? ( Y/N )"); 
 			char temp = 'Z';
 			temp = Main.userInput1.next().charAt(0);							// maybe need to change to int scanner
-
 			if( temp == 'Y') { 
 				javaScript = true;
 				break;
-			}
-			else if( temp == 'N') { 
+			} else if( temp == 'N') { 
 				javaScript = false;
 				break;
-			}
-
-			else {System.out.println("Please enter Y or N");}
+			} else {System.out.println("Please enter Y or N");}
 		}
-
-
-
 		while(true){
 			System.out.print("Do you have sales skills? ( Y/N )"); 
 			char temp = 'Z';
 			temp = Main.userInput1.next().charAt(0);							// maybe need to change to int scanner
-
 			if( temp == 'Y') { 
 				sales = true;
 				break;
-			}
-			else if( temp == 'N') { 
+			} else if( temp == 'N') { 
 				sales = false;
 				break;
-			}
-
-			else {System.out.println("Please enter Y or N");}
+			} else {System.out.println("Please enter Y or N");}
 		}
-
-
-
 		while(true){
 			System.out.print("Do you have management skills? ( Y/N )"); 
 			char temp = 'Z';
-			temp = Main.userInput1.next().charAt(0);							// maybe need to change to int scanner
-
+			temp = Main.userInput1.next().charAt(0);
 			if( temp == 'Y') { 
 				management = true;
 				break;
-			}
-			else if( temp == 'N') { 
+			} else if( temp == 'N') { 
 				management = false;
 				break;
-			}
-
-			else {System.out.println("Please enter Y or N");}
-
+			} else {System.out.println("Please enter Y or N");}
 		}
-
 		WriteFile.addCandidate(logInName, password, name, emailAddress, fieldOfStudy, experience, availability,
 				dutch, english, german, msOffice, javaScript, sales, management);		
 		System.out.println("\nCongratulations! You now have a candidate account and you can now login!");
-
 		Candidate.candidateLogIn();
 	}
-
-
-
-
 
 	public void setCandidateInfo(){
 		int choice = 0;
@@ -774,9 +693,42 @@ public class Candidate extends User {
 		}
 
 	}
-	public static void getCandidateInfo(){	
+	public String getAvailabilityInText(int Availability) {
+		String text = null;
+		if (Availability == 1 ) text = "Available immediately";
+		if (Availability == 2 ) text = "Not available immediately";
+		return text;
 	}
-	public static void applyToApplication(){	
+
+	public void printCandidate() {
+		/*
+		 * [4] emailAdress;
+		 * [5] fieldOfStudy;
+		 * [6] experience;
+		 * [7] availability;
+		 * [8] Dutch;
+		 * [9] English;
+		 * [10] German;
+		 * [11] MS Office;
+		 * [12] Javascript;
+		 * [13] Sales;
+		 * [14] Management
+		 */
+
+		System.out.println("Name: " + getName());
+		System.out.println("E-mailaddress: " + getEmailAddress());
+		System.out.println("Field of study: " + Vacancy.getFieldOfStudyByFieldOfStudy(getFieldOfStudy()));
+		System.out.println("Experience: " + getExperience() + " years");
+		System.out.println("Availability: " + getAvailabilityInText(getAvailability()));
+		System.out.println("Dutch: " + Vacancy.getSkill(getDutch()));
+		System.out.println("English: " + Vacancy.getSkill(getEnglish()));
+		System.out.println("German: " + Vacancy.getSkill(getGerman()));
+		System.out.println("MSOffice: " + Vacancy.getSkill(getMSOffice()));
+		System.out.println("JavaScript: " + Vacancy.getSkill(getJavaScript()));
+		System.out.println("Sales: " + Vacancy.getSkill(getSales()));
+		System.out.println("Management: " + Vacancy.getSkill(getManagement()) + "\n");
+
+
 	}
 
 	//SETTERS
