@@ -98,7 +98,7 @@ public class Main {
 			System.out.println("What would you like to do?");
 			System.out.println("A = Update profile information");
 			System.out.println("B = View vacancies");
-			System.out.println("C = Search vacancies");
+			System.out.println("C = Filter vacancies");
 			System.out.println("D = See applications");
 			System.out.println("E = Logout");
 			char choice = userInput1.next().charAt(0); 
@@ -150,7 +150,7 @@ public class Main {
 				continue;
 			}
 			if (choice == 'B'){
-				Recruiter.viewVacancies();
+				Recruiter.viewRecruiterVacancies();
 				continue;
 			}
 			if (choice == 'C'){

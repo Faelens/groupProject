@@ -7,9 +7,6 @@ public class User {
 	private static String name;
 	private static String emailAddress;
 
-	public static void registerAccount(){
-
-	}
 
 	public static void logOut(){
 		// Print a bye bye statement with a cool picture ASCII
@@ -31,7 +28,7 @@ public class User {
 			}
 			else if (choice == 'A') {
 				// Ask for vacancy
-				System.out.println("Please enter the vacancy number");
+				System.out.print("Please enter the vacancy number: ");
 				int vacancyID = Main.userInput3.nextInt();
 
 				// Find vacancy by id and print details
@@ -46,9 +43,8 @@ public class User {
 			}
 
 		}
-
-
 	}
+	
 
 	//Setters
 	public void setUserID(int userID){

@@ -121,7 +121,7 @@ public class ReadFile {
 		try{
 			BufferedReader br= new BufferedReader(new FileReader("Vacancy.txt"));
 			String sCurrentLine;
-			String[] uCurrentLine = new String[11];
+			String[] uCurrentLine = new String[13];
 
 			while((sCurrentLine = br.readLine()) != null){
 				uCurrentLine = sCurrentLine.split("\t");
@@ -144,7 +144,7 @@ public class ReadFile {
 		try{
 			BufferedReader br = new BufferedReader(new FileReader("Vacancy.txt"));
 			String sCurrentLine;
-			String[] uCurrentLine = new String[12];
+			String[] uCurrentLine = new String[13];
 
 			while((sCurrentLine = br.readLine()) != null){
 				uCurrentLine = sCurrentLine.split("\t");
@@ -164,7 +164,8 @@ public class ReadFile {
 							Boolean.parseBoolean(uCurrentLine[8]),
 							Boolean.parseBoolean(uCurrentLine[9]),			
 							Boolean.parseBoolean(uCurrentLine[10]),
-							Boolean.parseBoolean(uCurrentLine[11])
+							Boolean.parseBoolean(uCurrentLine[11]),
+							Integer.parseInt(uCurrentLine[12])
 							);
 
 					break;
@@ -185,13 +186,13 @@ public class ReadFile {
 		try{
 			BufferedReader br = new BufferedReader(new FileReader("Vacancy.txt"));
 			String sCurrentLine;
-			String[] uCurrentLine = new String[12];
-			
+			String[] uCurrentLine = new String[13];
+
 			while((sCurrentLine = br.readLine()) != null){
 				uCurrentLine = sCurrentLine.split("\t");
 
 				if(Integer.parseInt(uCurrentLine[2]) == studyfilter){
-					
+
 					System.out.println(uCurrentLine[0] + " - " + uCurrentLine[1]);
 				}
 			}				
@@ -209,13 +210,13 @@ public class ReadFile {
 		try{
 			BufferedReader br = new BufferedReader(new FileReader("Vacancy.txt"));
 			String sCurrentLine;
-			String[] uCurrentLine = new String[12];
-			
+			String[] uCurrentLine = new String[13];
+
 			while((sCurrentLine = br.readLine()) != null){
 				uCurrentLine = sCurrentLine.split("\t");
 
 				if(Integer.parseInt(uCurrentLine[3]) <= experience){
-					
+
 					System.out.println(uCurrentLine[0] + " - " + uCurrentLine[1]);
 				}
 			}				
@@ -225,23 +226,117 @@ public class ReadFile {
 		catch(IOException e){
 			System.out.println("The file does not exist!");
 		}
-		
+
 	}
-	
+
 	public static void getVacanciesBySkill(int rowNumber) {
 		try{
 			BufferedReader br = new BufferedReader(new FileReader("Vacancy.txt"));
 			String sCurrentLine;
-			String[] uCurrentLine = new String[12];
-			
+			String[] uCurrentLine = new String[13];
+
 			while((sCurrentLine = br.readLine()) != null){
 				uCurrentLine = sCurrentLine.split("\t");
 
 				if(Boolean.parseBoolean(uCurrentLine[rowNumber]) == true){
-					
+
 					System.out.println(uCurrentLine[0] + " - " + uCurrentLine[1]);
 				}
 			}				
+
+			br.close();
+		}
+		catch(IOException e){
+			System.out.println("The file does not exist!");
+		}
+	}
+	public static void getApplications(int userID) {
+		try{
+			BufferedReader br = new BufferedReader(new FileReader("Applications.txt"));
+			String sCurrentLine;
+			String[] uCurrentLine = new String[4];
+
+			while((sCurrentLine = br.readLine()) != null){
+				uCurrentLine = sCurrentLine.split("\t");
+
+				if(Integer.parseInt(uCurrentLine[1]) == userID){
+
+					System.out.println(uCurrentLine[0] + " - " + getJobTitleByVacancyID(Integer.parseInt(uCurrentLine[2])));
+				}
+			}				
+
+			br.close();
+		}
+		catch(IOException e){
+			System.out.println("The file does not exist!");
+		}
+	}
+
+	public static void getVacancies(int userID) {
+		try{
+			BufferedReader br = new BufferedReader(new FileReader("Vacancy.txt"));
+			String sCurrentLine;
+			String[] uCurrentLine = new String[13];
+
+			while((sCurrentLine = br.readLine()) != null){
+				uCurrentLine = sCurrentLine.split("\t");
+
+				if(Integer.parseInt(uCurrentLine[12]) == userID){
+
+					System.out.println(uCurrentLine[0] + " - " + uCurrentLine[1]);
+				}
+			}				
+
+			br.close();
+		}
+		catch(IOException e){
+			System.out.println("The file does not exist!");
+		}
+	}
+
+
+	private static String getJobTitleByVacancyID(int vacancyID) {
+		String jobTitle = null;
+		try{
+			BufferedReader br = new BufferedReader(new FileReader("Vacancy.txt"));
+			String sCurrentLine;
+			String[] uCurrentLine = new String[13];
+
+			while((sCurrentLine = br.readLine()) != null){
+				uCurrentLine = sCurrentLine.split("\t");
+
+				if(Integer.parseInt(uCurrentLine[0]) == vacancyID){
+
+					jobTitle = uCurrentLine[1];
+
+					break;
+				}				
+			}
+
+			br.close();
+		}
+		catch(IOException e){
+			System.out.println("The file does not exist!");
+		}
+		return jobTitle;
+	}
+	
+	public static void printMotivationByApplicationID(int applicationID) {
+		try{
+			BufferedReader br = new BufferedReader(new FileReader("Applications.txt"));
+			String sCurrentLine;
+			String[] uCurrentLine = new String[12];
+
+			while((sCurrentLine = br.readLine()) != null){
+				uCurrentLine = sCurrentLine.split("\t");
+
+				if(Integer.parseInt(uCurrentLine[0]) == applicationID){
+
+					System.out.println("Your motivation: " + uCurrentLine[3]);
+
+					break;
+				}				
+			}
 
 			br.close();
 		}

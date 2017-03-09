@@ -204,4 +204,22 @@ public class WriteFile {
 			e.printStackTrace();								// catches errors and shows where you can find the error
 		}		
 	}
+
+	public static void addVacancy(String jobTitle, int fieldOfStudy, int experience, 
+			int availability, boolean Dutch, boolean English, boolean German, boolean msOffice, boolean Javascript, boolean Sales, boolean Management) {
+
+		try {
+
+			int nextVacancyID = getNextId("Vacancy.txt");
+			// Initialize vacancies.txt as file to read
+			PrintWriter wr = new PrintWriter(new BufferedWriter (new FileWriter("Vacancy.txt", true)));						
+			String newLine = nextVacancyID +"\t"+ jobTitle +"\t"+ fieldOfStudy +"\t"+ experience +"\t"+ 
+					availability +"\t"+ Dutch +"\t"+ English +"\t"+ German +"\t"+ msOffice +"\t"+ Javascript +"\t"+ Sales +"\t"+ Management + "\t" + Main.recruiter.getUserID(); 			 
+
+			wr.println(newLine);
+			wr.close();	
+		} catch (IOException e) {
+			e.printStackTrace();								// catches errors and shows where you can find the error
+		}		
+	}
 }

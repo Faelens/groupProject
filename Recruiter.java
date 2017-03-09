@@ -15,6 +15,7 @@ public class Recruiter extends User {
 	private String company;
 
 	public Recruiter(int userID, String logInName, String password, String name, String emailAddress, String company ){
+		setUserID(userID);
 		setLogInName(logInName);
 		setPassword(password);
 		setName(name);
@@ -240,8 +241,12 @@ public class Recruiter extends User {
 
 	}
 
-	public static void viewVacancies(){
-		// view recruiter vacancies
+	public static void viewRecruiterVacancies(){
+
+		System.out.println("\nYou have the following vacancies outstanding:");
+		ReadFile.getVacancies(Main.recruiter.getUserID());
+		viewVacancies();
+		System.out.println("");
 	}
 
 	public static void viewApplications(){
@@ -249,8 +254,214 @@ public class Recruiter extends User {
 	}
 
 	public static void setVacancy(){
+		System.out.println("#####");
+		System.out.println("Create a vacancy");
+		System.out.println("#####");
+
+		String jobTitle;
+		int fieldOfStudy;
+		int requiredExperience;
+		int preferredAvailability;
+		boolean vacancyDutch;
+		boolean vacancyEnglish;
+		boolean vacancyGerman;
+		boolean vacancyMSOffice;
+		boolean vacancyJavaScript;
+		boolean vacancySales;
+		boolean vacancyManagement;
+
+
+		while(true){
+			System.out.print("Job title: ");
+			jobTitle = Main.userInput2.nextLine();
+
+			if(jobTitle.equals("")){
+				System.out.println("Can't be empty!");
+				continue;
+			}
+			break;
+		}
+		while(true){
+			System.out.println("What is the required field of study? : ");
+			System.out.println("1 = Business");
+			System.out.println("2 = Social");
+			System.out.println("3 = Technical");
+			fieldOfStudy = Main.userInput3.nextInt();
+
+			if(fieldOfStudy == 1 || fieldOfStudy == 2 || fieldOfStudy == 3) break;
+
+			System.out.println("Please enter 1 , 2 or 3");
+
+		}
+
+		while(true){
+			System.out.print("What is the required workexperience in years? ");
+			requiredExperience = (int) Main.userInput3.nextInt();
+
+			if(requiredExperience>= 0) break;
+
+			System.out.println("Please enter a positive number");
+
+		} 
+		
+		while(true){
+			System.out.print("Do you need a candidate rightaway? ( Y/N ) "); 
+			char temp = 'Z';
+			temp = Main.userInput1.next().charAt(0);							
+
+			if( temp == 'Y') { 
+				preferredAvailability = 1;
+				break;
+			}
+			else if( temp == 'N') { 
+				preferredAvailability = 2;
+				break;
+			}
+
+			else {System.out.println("Please enter Y or N");}
+		}
+
+		while(true){
+			System.out.print("Do you need to speak Dutch? ( Y/N ) "); 
+			char temp = 'Z';
+			temp = Main.userInput1.next().charAt(0);							
+
+			if( temp == 'Y') { 
+				vacancyDutch = true;
+				break;
+			}
+			else if( temp == 'N') { 
+				vacancyDutch = false;
+				break;
+			}
+
+			else {System.out.println("Please enter Y or N");}
+		}
+
+
+
+
+		while(true){
+			System.out.print("Do you need to speak English? ( Y/N ) "); 
+			char temp = 'Z';
+			temp = Main.userInput1.next().charAt(0);							// maybe need to change to int scanner
+
+			if( temp == 'Y') { 
+				vacancyEnglish = true;
+				break;
+			}
+			else if( temp == 'N') { 
+				vacancyEnglish = false;
+				break;
+			}
+
+			else {System.out.println("Please enter Y or N");}
+		}
+
+
+
+
+		while(true){
+			System.out.print("Do you need to speak German? ( Y/N ) "); 
+			char temp = 'Z';
+			temp = Main.userInput1.next().charAt(0);							// maybe need to change to int scanner
+
+			if( temp == 'Y') { 
+				vacancyGerman = true;
+				break;
+			}
+			else if( temp == 'N') { 
+				vacancyGerman = false;
+				break;
+			}
+
+			else {System.out.println("Please enter Y or N");}
+		}
+
+
+
+		while(true){
+			System.out.print("Do you need to have MS Office skills? ( Y/N ) "); 
+			char temp = 'Z';
+			temp = Main.userInput1.next().charAt(0);							// maybe need to change to int scanner
+
+			if( temp == 'Y') { 
+				vacancyMSOffice = true;
+				break;
+			}
+			else if( temp == 'N') { 
+				vacancyMSOffice = false;
+				break;
+			}
+
+			else {System.out.println("Please enter Y or N");}
+
+		}
+
+
+
+		while(true){
+			System.out.print("Do you need to have Javascript skills? ( Y/N ) "); 
+			char temp = 'Z';
+			temp = Main.userInput1.next().charAt(0);							// maybe need to change to int scanner
+
+			if( temp == 'Y') { 
+				vacancyJavaScript = true;
+				break;
+			}
+			else if( temp == 'N') { 
+				vacancyJavaScript = false;
+				break;
+			}
+
+			else {System.out.println("Please enter Y or N");}
+		}
+
+
+
+		while(true){
+			System.out.print("Do you need to have sales skills? ( Y/N ) "); 
+			char temp = 'Z';
+			temp = Main.userInput1.next().charAt(0);							// maybe need to change to int scanner
+
+			if( temp == 'Y') { 
+				vacancySales = true;
+				break;
+			}
+			else if( temp == 'N') { 
+				vacancySales = false;
+				break;
+			}
+
+			else {System.out.println("Please enter Y or N");}
+		}
+
+
+
+		while(true){
+			System.out.print("Do you need to have management skills? ( Y/N ) "); 
+			char temp = 'Z';
+			temp = Main.userInput1.next().charAt(0);							// maybe need to change to int scanner
+
+			if( temp == 'Y') { 
+				vacancyManagement = true;
+				break;
+			}
+			else if( temp == 'N') { 
+				vacancyManagement = false;
+				break;
+			}
+
+			else {System.out.println("Please enter Y or N");}
+
+		}
+
+		WriteFile.addVacancy(jobTitle, fieldOfStudy, requiredExperience, preferredAvailability, vacancyDutch, vacancyEnglish, vacancyGerman, vacancyMSOffice, vacancyJavaScript, vacancySales, vacancyManagement);		
+		System.out.println("\nCongratulations! You created a new vacancy.\n");
+
 
 	}
+	
 	public void setCompany(String company){
 		this.company = company;
 	}

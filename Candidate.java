@@ -707,7 +707,7 @@ public class Candidate extends User {
 						System.out.println("B = JavaScript");
 						System.out.println("C = Sales");
 						System.out.println("D = Management");
-						
+
 						while(true){
 							char skillfilter = Main.userInput1.next().charAt(0);
 							if  (!(skillfilter == 'A') && !(skillfilter == 'B') && !(skillfilter == 'C') && !(skillfilter == 'D')) {
@@ -739,9 +739,42 @@ public class Candidate extends User {
 				}
 			}
 	}
-	public static void getCandidateInfo(){	
-	}
+
 	public static void viewApplications(){
+		System.out.println("\nYou have applied on the following vacancies:");
+		ReadFile.getApplications(Main.candidate.getUserID());
+		viewMotivation();
+		System.out.println("");
+	}
+
+	public static void viewMotivation(){
+		// Ask what ID user wants to see more information, or go back to main menu
+		System.out.println("\nWould you like to see your motivation of an application (A) or go back to main menu (B)?");
+
+		while(true){
+			char choice = Main.userInput1.next().charAt(0);
+
+			if (choice != 'A' && choice != 'B') {
+				System.out.println("Please choose A or B");
+				continue;
+			}
+			else if (choice == 'A') {
+				// Ask for vacancy
+				System.out.print("Please enter the application number: ");
+				int applicationID = Main.userInput3.nextInt();
+
+				// Find vacancy by id and print details
+				ReadFile.printMotivationByApplicationID(applicationID);
+
+				break;
+			}
+			else {
+				break;
+			}
+		}
+
+	}
+	public static void getCandidateInfo(){	
 	}
 	public static void applyToApplication(){	
 	}

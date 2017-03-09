@@ -13,6 +13,7 @@ package groupProject;
  * [9] Javascript;
  * [10] Sales;
  * [11] Management
+ * [12] RecruiterID
  */
 
 public class Vacancy {
@@ -28,10 +29,11 @@ public class Vacancy {
 	private boolean vacancyJavaScript;
 	private boolean vacancySales;
 	private boolean vacancyManagement;
+	private int recruiterID;
 
 	public Vacancy(int vacancyID, String jobTitle, int fieldOfStudy, int requiredExperience, boolean preferredAvailability,
 			boolean vacancyDutch, boolean vacancyEnglish, boolean vacancyGerman, boolean vacancyMSOffice,
-			boolean vacancyJavaScript, boolean vacancySales, boolean vacancyManagement) {
+			boolean vacancyJavaScript, boolean vacancySales, boolean vacancyManagement, int recruiterID) {
 		setVacancyID(vacancyID);
 		setJobTitle(jobTitle);
 		setFieldOfStudy(fieldOfStudy);
@@ -44,6 +46,7 @@ public class Vacancy {
 		setVacancyJavaScript(vacancyJavaScript);
 		setVacancySales(vacancySales);
 		setVacancyManagement(vacancyManagement);
+		Main.recruiter.setUserID(recruiterID);
 		
 	}
 	/*boolean[] vacancyLanguages = new boolean[4]; 
