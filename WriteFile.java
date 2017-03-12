@@ -72,7 +72,7 @@ public class WriteFile {
 
 
 	public static int getNextId(String txtfile) throws IOException{
-		int nextUserID = 0; 	// TODO nextUserID moet altijd minimaal 1 zijn. Dus deze 1, denk ik. Maar nu geeft hij bij een lege txt uberhaupt een error!
+		int nextUserID = 0;
 		BufferedReader br;
 		try {
 			br = new BufferedReader(new FileReader(txtfile));		
@@ -86,17 +86,19 @@ public class WriteFile {
 			}
 
 			br.close();
-
-			uLastLine = lastLine.split("\t");			
-			int previousUserID = Integer.parseInt(uLastLine[0]);			
-			nextUserID = previousUserID + 1;
+			if (lastLine == null) {
+				nextUserID = 1;
+			} else {
+				uLastLine = lastLine.split("\t");			
+				int previousUserID = Integer.parseInt(uLastLine[0]);			
+				nextUserID = previousUserID + 1;}
 		} catch (FileNotFoundException e) {
 			e.printStackTrace();
 		}	
 
 		return nextUserID;
 	}
-	
+
 
 	public static void updateCandidate(Candidate candidate) {
 		/* 
@@ -117,14 +119,14 @@ public class WriteFile {
 		 * [13] Sales;
 		 * [14] Management
 		 */
-		
+
 		try {
 			String[] lines = new String[100];
 
 			BufferedReader br = new BufferedReader(new FileReader("Candidates.txt"));			
 			String sCurrentLine;
 			String[] uCurrentLine = new String[15];
-			
+
 			int counter = 0;
 			while((sCurrentLine = br.readLine()) != null){					
 				uCurrentLine = sCurrentLine.split("\t");			
@@ -137,20 +139,20 @@ public class WriteFile {
 				counter++;
 			}
 			br.close();
-			
+
 			// When the if statement is met, so the correct ID is found, update the line in the textfile.
 			PrintWriter wr = new PrintWriter(new BufferedWriter (new FileWriter("Candidates.txt")));	
-			
+
 			for(int i = 0; i < counter; i++){
 				wr.println(lines[i]);
 			}
-			
+
 			wr.close();
 		} catch (IOException error) {
 			error.printStackTrace();
 		}		
 	}
-	
+
 	public static void updateRecruiter(Recruiter recruiter) {
 
 		try {
