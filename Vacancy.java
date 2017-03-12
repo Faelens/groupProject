@@ -46,7 +46,7 @@ public class Vacancy {
 		setVacancyJavaScript(vacancyJavaScript);
 		setVacancySales(vacancySales);
 		setVacancyManagement(vacancyManagement);
-		Main.recruiter.setUserID(recruiterID);
+		this.recruiterID = recruiterID;
 		
 	}
 	/*boolean[] vacancyLanguages = new boolean[4]; 

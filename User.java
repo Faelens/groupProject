@@ -17,27 +17,23 @@ public class User {
 
 		// Ask what ID user wants to see more information, or go back to main menu
 
-		System.out.println("\nWould you like to see more information about a vacancy (A) or go back to main menu (B)?");
+		System.out.println("\nIf yout want to see more information, please enter a vacancy number. Enter 0 to go back to main menu.");
 		
 		while(true){
-			char choice = Main.userInput1.next().charAt(0);
+			int choice = Main.userInput3.nextInt();
 
-			if (choice != 'A' && choice != 'B') {
-				System.out.println("Please choose A or B");
+			if (choice < 0) {
+				System.out.println("Please enter a valid input");
 				continue;
 			}
-			else if (choice == 'A') {
-				// Ask for vacancy
-				System.out.print("Please enter the vacancy number: ");
-				int vacancyID = Main.userInput3.nextInt();
-
-				// Find vacancy by id and print details
-				Main.vacancy = ReadFile.getVacancyByVacancyID(vacancyID);
-				Main.vacancy.printVacancy();
-				if (Main.recruiterOrCandidate == 'B') Candidate.applyForVacancy();
+			else if (choice == 0) {
 				break;
 			}
 			else {
+				// Find vacancy by id and print details
+				Main.vacancy = ReadFile.getVacancyByVacancyID(choice);
+				Main.vacancy.printVacancy();
+				if (Main.recruiterOrCandidate == 'B') Candidate.applyForVacancy();
 				break;
 			}
 

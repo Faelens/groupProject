@@ -233,27 +233,24 @@ public class Recruiter extends User {
 
 		// Ask what ID user wants to see more information, or go back to main menu
 
-		System.out.println("\nWould you like to see more information about the candidate (A) or go back to main menu (B)?");
+		System.out.println("\nIf yout want to see more information, please enter a candidate number. Enter 0 to go back to main menu.");
 		
 		while(true){
-			char choice = Main.userInput4.next().charAt(0);
+			int choice = Main.userInput3.nextInt();
 
-			if (choice != 'A' && choice != 'B') {
-				System.out.println("Please choose A or B");
+			if (choice < 0 ) {
+				System.out.println("Please enter a valid input");
 				continue;
 			}
-			else if (choice == 'A') {
-				// Ask for vacancy
-				System.out.print("Please enter the candidate number: ");
-				int candidateID = Main.userInput3.nextInt();
-
-				// Find vacancy by id and print details
-				Main.candidate = ReadFile.getCandidateByCandidateID(candidateID);
-				Main.candidate.printCandidate();
-				System.out.print("");
-				break;
+			else if (choice == 0) {
+				break; 	// back to main menu
 			}
 			else {
+
+				// Find vacancy by id and print details
+				Main.candidate = ReadFile.getCandidateByCandidateID(choice);
+				Main.candidate.printCandidate();
+				System.out.print("");
 				break;
 			}
 

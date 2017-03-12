@@ -470,7 +470,7 @@ public class ReadFile {
 
 				if(Integer.parseInt(uCurrentLine[2]) == ID){
 
-					System.out.println(uCurrentLine[1] + " - " + getNameByCandidateID(Integer.parseInt(uCurrentLine[1])));
+					System.out.println(uCurrentLine[1] + " - Name: " + getNameByCandidateID(Integer.parseInt(uCurrentLine[1]))+ " - Motivation: " + uCurrentLine[3]);
 					temp = true;
 				}
 			}				

@@ -72,7 +72,7 @@ public class WriteFile {
 
 
 	public static int getNextId(String txtfile) throws IOException{
-		int nextUserID = 0;
+		int nextUserID = 0; 	// TODO nextUserID moet altijd minimaal 1 zijn. Dus deze 1, denk ik. Maar nu geeft hij bij een lege txt uberhaupt een error!
 		BufferedReader br;
 		try {
 			br = new BufferedReader(new FileReader(txtfile));		
