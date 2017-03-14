@@ -41,11 +41,10 @@ public class Recruiter extends User {
 				System.out.println("\nThis user does not exist!");
 				continue;
 			}
-			if(!getPassword().equals(password)){
+			if(!tempRecruiter.getPassword().equals(password)){
 				System.out.println("\nThis password is not correct!");
 				continue;
 			}
-
 			Main.recruiter = tempRecruiter;
 			break;
 		}
@@ -134,6 +133,10 @@ public class Recruiter extends User {
 			System.out.println("4 = Change company");
 			System.out.println("5 = Back to main menu");
 
+			while (!Main.userInput3.hasNextInt()) {
+		        System.out.println("That's not a number!");
+		        Main.userInput3.next(); // Tells to go to next scanner
+		    }
 			choice = Main.userInput3.nextInt();
 
 			if(choice == 1){	//password
@@ -164,9 +167,9 @@ public class Recruiter extends User {
 				}
 
 			}
-			if(choice == 2){ // Name			
+			if(choice == 2){ 																// Name			
 				while(true){		
-					System.out.println("\nYour current name is: " + User.getName());
+					System.out.println("\nYour current name is: " + Main.recruiter.getName());
 					System.out.print("Please enter your new name: ");
 					String newname = Main.userInput2.nextLine();	
 
@@ -178,14 +181,14 @@ public class Recruiter extends User {
 
 					WriteFile.updateRecruiter(this);
 					System.out.println("Your name has been updated correctly to " 
-							+ User.getName() + ".\n");
+							+ Main.recruiter.getName() + ".\n");
 					break;
 				}
 			}
 
 			if(choice == 3){ // Email address			
 				while(true){		
-					System.out.println("\nYour current e-mailaddress is: " + User.getEmailAddress());
+					System.out.println("\nYour current e-mailaddress is: " + Main.recruiter.getEmailAddress());
 					System.out.print("Please enter your new e-mailaddress:");
 					String newemail = Main.userInput2.nextLine();	
 
@@ -197,7 +200,7 @@ public class Recruiter extends User {
 
 					WriteFile.updateRecruiter(this);
 					System.out.println("Your e-mailaddress has been updated correctly to " 
-							+ User.getEmailAddress() + ".\n");
+							+ Main.recruiter.getEmailAddress() + ".\n");
 					break;
 
 				}
@@ -236,6 +239,10 @@ public class Recruiter extends User {
 		System.out.println("\nIf yout want to see more information, please enter a candidate number. Enter 0 to go back to main menu.");
 		
 		while(true){
+			while (!Main.userInput3.hasNextInt()) {
+		        System.out.println("That's not a number!");
+		        Main.userInput3.next(); // Tells to go to next scanner
+		    }
 			int choice = Main.userInput3.nextInt();
 
 			if (choice < 0 ) {
@@ -302,6 +309,10 @@ public class Recruiter extends User {
 					}else if (filter == 'B'){
 						System.out.println("\nHow many years of experience do you want to look for?");
 						while (true) {
+							while (!Main.userInput3.hasNextInt()) {
+						        System.out.println("That's not a number!");
+						        Main.userInput3.next(); // Tells to go to next scanner
+						    }
 							int experience = (int) Main.userInput3.nextInt();
 							
 							if (experience < 0 || experience > 60) {System.out.println("Please enter a valid input (between 0 and 60)"); continue;}
@@ -363,6 +374,10 @@ public class Recruiter extends User {
 		ReadFile.getVacancies(Main.recruiter.getUserID());
 
 		System.out.print("For which vacancy would you like to see the applications? Please enter a number: ");
+		while (!Main.userInput3.hasNextInt()) {
+	        System.out.println("That's not a number!");
+	        Main.userInput3.next(); // Tells to go to next scanner
+	    }
 		int vacancyID = Main.userInput3.nextInt();
 		ReadFile.getApplicationsByVacancyID(vacancyID);
 		viewCandidates();
@@ -401,6 +416,10 @@ public class Recruiter extends User {
 			System.out.println("1 = Business");
 			System.out.println("2 = Social");
 			System.out.println("3 = Technical");
+			while (!Main.userInput3.hasNextInt()) {
+		        System.out.println("That's not a number!");
+		        Main.userInput3.next(); // Tells to go to next scanner
+		    }
 			fieldOfStudy = Main.userInput3.nextInt();
 
 			if(fieldOfStudy == 1 || fieldOfStudy == 2 || fieldOfStudy == 3) break;
@@ -411,6 +430,10 @@ public class Recruiter extends User {
 
 		while(true){
 			System.out.print("What is the required workexperience in years? ");
+			while (!Main.userInput3.hasNextInt()) {
+		        System.out.println("That's not a number!");
+		        Main.userInput3.next(); // Tells to go to next scanner
+		    }
 			requiredExperience = (int) Main.userInput3.nextInt();
 
 			if(requiredExperience>= 0) break;
@@ -422,7 +445,8 @@ public class Recruiter extends User {
 		while(true){
 			System.out.print("Do you need a candidate rightaway? ( Y/N ) "); 
 			char temp = 'Z';
-			temp = Main.userInput1.next().charAt(0);							
+			temp = Main.userInput1.next().charAt(0);	
+			temp = Character.toUpperCase(temp);						
 
 			if( temp == 'Y') { 
 				preferredAvailability = 1;
@@ -439,7 +463,8 @@ public class Recruiter extends User {
 		while(true){
 			System.out.print("Do you need to speak Dutch? ( Y/N ) "); 
 			char temp = 'Z';
-			temp = Main.userInput1.next().charAt(0);							
+			temp = Main.userInput1.next().charAt(0);	
+			temp = Character.toUpperCase(temp);										
 
 			if( temp == 'Y') { 
 				vacancyDutch = true;
@@ -459,7 +484,8 @@ public class Recruiter extends User {
 		while(true){
 			System.out.print("Do you need to speak English? ( Y/N ) "); 
 			char temp = 'Z';
-			temp = Main.userInput1.next().charAt(0);							// maybe need to change to int scanner
+			temp = Main.userInput1.next().charAt(0);	
+			temp = Character.toUpperCase(temp);				
 
 			if( temp == 'Y') { 
 				vacancyEnglish = true;
@@ -479,8 +505,8 @@ public class Recruiter extends User {
 		while(true){
 			System.out.print("Do you need to speak German? ( Y/N ) "); 
 			char temp = 'Z';
-			temp = Main.userInput1.next().charAt(0);							// maybe need to change to int scanner
-
+			temp = Main.userInput1.next().charAt(0);			
+			temp = Character.toUpperCase(temp);				
 			if( temp == 'Y') { 
 				vacancyGerman = true;
 				break;
@@ -498,8 +524,9 @@ public class Recruiter extends User {
 		while(true){
 			System.out.print("Do you need to have MS Office skills? ( Y/N ) "); 
 			char temp = 'Z';
-			temp = Main.userInput1.next().charAt(0);							// maybe need to change to int scanner
-
+			temp = Main.userInput1.next().charAt(0);					
+			temp = Character.toUpperCase(temp);				
+			
 			if( temp == 'Y') { 
 				vacancyMSOffice = true;
 				break;
@@ -518,7 +545,8 @@ public class Recruiter extends User {
 		while(true){
 			System.out.print("Do you need to have Javascript skills? ( Y/N ) "); 
 			char temp = 'Z';
-			temp = Main.userInput1.next().charAt(0);							// maybe need to change to int scanner
+			temp = Main.userInput1.next().charAt(0);					
+			temp = Character.toUpperCase(temp);				
 
 			if( temp == 'Y') { 
 				vacancyJavaScript = true;
@@ -537,7 +565,8 @@ public class Recruiter extends User {
 		while(true){
 			System.out.print("Do you need to have sales skills? ( Y/N ) "); 
 			char temp = 'Z';
-			temp = Main.userInput1.next().charAt(0);							// maybe need to change to int scanner
+			temp = Main.userInput1.next().charAt(0);				
+			temp = Character.toUpperCase(temp);				
 
 			if( temp == 'Y') { 
 				vacancySales = true;
@@ -556,7 +585,8 @@ public class Recruiter extends User {
 		while(true){
 			System.out.print("Do you need to have management skills? ( Y/N ) "); 
 			char temp = 'Z';
-			temp = Main.userInput1.next().charAt(0);							// maybe need to change to int scanner
+			temp = Main.userInput1.next().charAt(0);						
+			temp = Character.toUpperCase(temp);				
 
 			if( temp == 'Y') { 
 				vacancyManagement = true;

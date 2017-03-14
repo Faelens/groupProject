@@ -4,8 +4,6 @@ import java.io.*;
 
 public class WriteFile {
 
-
-
 	public static void addCandidate(String logInName, String password, String name, String emailAddress, int fieldOfStudy, int experience, 
 			int availability, boolean Dutch, boolean English, boolean German, boolean msOffice, boolean Javascript, boolean Sales, boolean Management) {
 
@@ -29,13 +27,11 @@ public class WriteFile {
 		 */
 
 		try {
-
 			int nextUserID = getNextId("Candidates.txt");
 			// Initialize users.txt as file to read
 			PrintWriter wr = new PrintWriter(new BufferedWriter (new FileWriter("Candidates.txt", true)));						
 			String newLine = nextUserID +"\t"+ logInName +"\t"+ password +"\t"+ name +"\t"+ emailAddress +"\t"+ fieldOfStudy +"\t"+ experience +"\t"+ 
 					availability +"\t"+ Dutch +"\t"+ English +"\t"+ German +"\t"+ msOffice +"\t"+ Javascript +"\t"+ Sales +"\t"+ Management; 			 
-
 			wr.println(newLine);
 			wr.close();	
 		} catch (IOException e) {
@@ -57,12 +53,10 @@ public class WriteFile {
 
 
 		try {
-
 			int nextUserID = getNextId("Recruiters.txt");
 			// Initialize users.txt as file to read
 			PrintWriter wr = new PrintWriter(new BufferedWriter (new FileWriter("Recruiters.txt", true)));						
 			String newLine = (nextUserID + "\t" + logInName + "\t" + password + "\t" + name + "\t" + emailAddress + "\t" + company); 			 
-
 			wr.println(newLine);
 			wr.close();	
 		} catch (IOException e) {
@@ -132,7 +126,7 @@ public class WriteFile {
 				uCurrentLine = sCurrentLine.split("\t");			
 				// every time if statement not met, increment counter to know what line is read.
 				if(Integer.parseInt(uCurrentLine[0]) == candidate.getUserID()){				
-					sCurrentLine = uCurrentLine[0] +"\t"+ User.getLoginName() +"\t"+ User.getPassword() +"\t"+ User.getName() +"\t"+ User.getEmailAddress() +"\t"+ candidate.getFieldOfStudy() +"\t"+ candidate.getExperience() +"\t"+ 
+					sCurrentLine = uCurrentLine[0] +"\t"+ candidate.getLoginName() +"\t"+ candidate.getPassword() +"\t"+ candidate.getName() +"\t"+ candidate.getEmailAddress() +"\t"+ candidate.getFieldOfStudy() +"\t"+ candidate.getExperience() +"\t"+ 
 							candidate.getAvailability() +"\t"+ candidate.getDutch() +"\t"+ candidate.getEnglish() +"\t"+ candidate.getGerman() +"\t"+ candidate.getMSOffice() +"\t"+ candidate.getJavaScript() +"\t"+ candidate.getSales() +"\t"+ candidate.getManagement();				 
 				}
 				lines[counter] = sCurrentLine;		
@@ -167,7 +161,7 @@ public class WriteFile {
 				uCurrentLine = sCurrentLine.split("\t");			
 				// every time if statement not met, increment counter to know what line is read.
 				if(Integer.parseInt(uCurrentLine[0]) == recruiter.getUserID()){				
-					sCurrentLine = uCurrentLine[0] +"\t"+ User.getLoginName() +"\t"+ User.getPassword() +"\t"+ User.getName() +"\t"+ User.getEmailAddress() +"\t"+ recruiter.getCompany(); 				 
+					sCurrentLine = uCurrentLine[0] +"\t"+ recruiter.getLoginName() +"\t"+ recruiter.getPassword() +"\t"+ recruiter.getName() +"\t"+ recruiter.getEmailAddress() +"\t"+ recruiter.getCompany(); 				 
 				}
 				lines[counter] = sCurrentLine;		
 				counter++;
